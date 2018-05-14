@@ -11,6 +11,11 @@ public class AppController {
         return "index";
     }
 
+    @RequestMapping("/damagetype")
+    public String damageType(){
+        return "damagetype";
+    }
+
    /* @RequestMapping("/calendar")
     public String calendarPage(){
         return "calendar";

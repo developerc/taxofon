@@ -11,20 +11,22 @@ public class TaxofonList {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
-
     private String tlfnum;
-
     private String krdid;
-
     private String lon;
-
     private String lat;
-
     private String numsam;
-
     private String type;
-
     private String adres;
+    private String version;
+
+    public String getVersion() {
+        return version;
+    }
+
+    public void setVersion(String version) {
+        this.version = version;
+    }
 
     public String getAdres() {
         return adres;

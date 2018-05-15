@@ -12,11 +12,27 @@
             success: function (result) {
                 var output = '';
                 var stringData = JSON.stringify(result);
-                output +=
-                    '<br><br>' + stringData;
-                $('#response').html(
-                    output
-                );
+                output += '<br><br>' + stringData;
+
+                var arrData = JSON.parse(stringData);
+                /*output +='<br><br>' + arrData.id + '---' + arrData.itemDamage;*/
+                output+= '<table class="table">';
+                output+= '<tr>';
+                output+= '<th>ID</'+'th>';
+                output+= '<th>Тип неисправности</'+'th>';
+                output+= '</' +'tr>';
+
+                for (i in arrData) {
+                    output += '<tr>';
+                    output += '<th>' + arrData[i].id + '</' + 'th>';
+                    output += '<th>' + arrData[i].itemDamage + '</' + 'th>';
+                    output += '</' + 'tr>';
+                }
+
+
+                output+= '</' +'table>';
+                $('#response').html(output);
+
                 /*var arrData = JSON.parse(stringData)[1];
                 var questions=arrData.questions;
                 var questionCount = questions.length;

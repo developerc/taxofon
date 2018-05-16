@@ -16,7 +16,7 @@
 
                 var arrData = JSON.parse(stringData);
                 /*output +='<br><br>' + arrData.id + '---' + arrData.itemDamage;*/
-                output+= '<table class="table">';
+                output+= '<table class="table-row-cell" border="1">';
                 output+= '<tr>';
                 output+= '<th>ID</'+'th>';
                 output+= '<th>Тип неисправности</'+'th>';
@@ -122,6 +122,20 @@
 <div class="panel panel-default">
     <div class="panel-heading">
         <strong>Прохождение теста</strong>
+    </div>
+    <div class="panel-body">
+        <table class="table-row-cell">
+            <tr>
+                <th>Добавить тип неисправности</th>
+                <th>место для ввода неисправности</th>
+                <th><button type="button" onclick="AddDamageType()">OK</button></th>
+            </tr>
+            <tr>
+                <th>Удалить ID неисправности</th>
+                <th>место для ввода неисправности</th>
+                <th><button type="button" onclick="DelDamageType()">OK</button></th>
+            </tr>
+        </table>
     </div>
     <div class="panel-body" id="response"></div>
     <%--<div class="panel-body ">

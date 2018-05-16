@@ -3,7 +3,7 @@
 <script>
     var service = 'http://localhost:8080/';
     arrCorrect = [];
-    var RestGetAllQuestions = function () {
+    var RestGetAllDamages = function () {
         $.ajax({
             type: 'GET',
             url: service + 'dmgdescription/all',
@@ -99,7 +99,7 @@
         alert(jsonRightAns);
         //вызываем функцию отправки JSON POST запросом на сервер
         RestPutRightAns(jsonRightAns);
-    }
+    };
     var RestPutRightAns = function (arrJsonRightAns) {
         $.ajax({
             type: 'POST',
@@ -116,7 +116,45 @@
             }
         });
     };
-    window.onload = RestGetAllQuestions;
+    //-------------------------------
+    var AddDamageType = function (addDamageType) {
+        var JSONObject =  {
+            'itemDamage': addDamageType
+        };
+        $.ajax({
+           type: 'POST',
+           url: service + "dmgdescription/add",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(JSONObject),
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                alert('Тип неисправности сохранен');
+                RestGetAllDamages();
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                alert('Ошибка сохранения типа неисправности');
+            }
+        });
+    };
+
+    var DelDamageId = function (idDamage) {
+    $.ajax({
+        type: 'DELETE',
+        url: service + "dmgdescription/delete?id=" + idDamage,
+        dataType: 'json',
+        async: false,
+        success: function (result) {
+            alert('Тип неисправности удален');
+            RestGetAllDamages();
+        },
+        error: function (jqXHR, testStatus, errorThrown) {
+            alert('Ошибка удаления неисправности');
+        }
+    });
+    };
+
+    window.onload = RestGetAllDamages;
 </script>
 <body>
 <div class="panel panel-default">
@@ -127,13 +165,13 @@
         <table class="table-row-cell">
             <tr>
                 <th>Добавить тип неисправности</th>
-                <th>место для ввода неисправности</th>
-                <th><button type="button" onclick="AddDamageType()">OK</button></th>
+                <th><input id="addTypeDamage" value="тип неисправности"/></th>
+                <th><button type="button" onclick="AddDamageType($('#addTypeDamage').val())">OK</button></th>
             </tr>
             <tr>
-                <th>Удалить ID неисправности</th>
-                <th>место для ввода неисправности</th>
-                <th><button type="button" onclick="DelDamageType()">OK</button></th>
+                <th>Удалить по ID неисправности</th>
+                <th><input id="delIdDamage" value="ID неисправности"/></th>
+                <th><button type="button" onclick="DelDamageId($('#delIdDamage').val())">OK</button></th>
             </tr>
         </table>
     </div>

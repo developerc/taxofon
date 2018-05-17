@@ -3,12 +3,12 @@
 <footer>
     <div class="row">
         <div class="col-lg-12">
-            <p>Java Web © JRepetitor 2018</p>
+            <p>ПАО Ростелеком © ЛТЦ Тихорецкий район 2018</p>
         </div>
     </div>
 </footer>
 
 </div>
 
-</body>
+<%--</body>--%>
 </html>

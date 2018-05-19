@@ -44,11 +44,37 @@
 
                 output+= '</' +'table>';
                 $('#response').html(output);
+                RestGetAllDamages();
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 $('#response').html(JSON.stringify(jqXHR))
             }
 
+        });
+    };
+
+    var RestGetAllDamages = function () {
+        $.ajax({
+            type: 'GET',
+            url: service + 'dmgdescription/all',
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                var output = '';
+                var stringData = JSON.stringify(result);
+                var arrData = JSON.parse(stringData);
+                output+='<select name="typeDamage" id="typeDamage">';
+                for (i in arrData) {
+                    output+='<option>' + arrData[i].itemDamage + '</' + 'option>';
+                    /*output+=
+                <option>неисправность 1</option>*/
+                }
+                output+='</' + 'select>'
+                $('#selectTypeDamage').html(output);
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                $('#selectTypeDamage').html(JSON.stringify(jqXHR))
+            }
         });
     };
 
@@ -62,7 +88,7 @@
         });
     } );
 
-    var openDialog = function () {
+    var OpenModalForm = function () {
       $("#dialog").dialog('open');
     };
 
@@ -114,6 +140,10 @@
         });
     };
 
+    var OpenTroubleReport = function (idDamagedTaxofon, typeDamage) {
+        alert(idDamagedTaxofon + '___' + typeDamage);
+    };
+
     window.onload = RestGetAllTaxofon;
 </script>
 <body>
@@ -151,11 +181,11 @@
                     <th>Добавить таксофон</th>
                     <th><%--<input id="addTaxofon" value="тип неисправности"/>--%></th>
                     <%--<th><button type="button" onclick="AddTaxofon($('#addTaxofon').val())">OK</button></th>--%>
-                    <th><button type="button" onclick="openDialog()">OK</button></th>
+                    <th><button type="button" onclick="OpenModalForm()">OK</button></th>
                 </tr>
                 <tr>
-                    <th>Удалить по ID таксофон</th>
-                    <th><input id="delIdTaxofon" value="ID таксофона"/></th>
+                    <th>Удалить по ID</th>
+                    <th><input id="delIdTaxofon" value="ID"/></th>
                     <th><button type="button" onclick="RestDelIdTaxofon($('#delIdTaxofon').val())">OK</button></th>
                 </tr>
             </table>
@@ -163,6 +193,31 @@
     </div>
     <hr>
     <hr>
+    <div class="panel">
+        <div class="panel-heading"><strong>Неисправности Таксофонов</strong></div>
+        <div class="panel-body">
+            <table class="table-row-cell">
+                <tr>
+                    <th>Открыть заявку</th>
+                    <th> <input id="idDamagedTaxofon" value="ID"> </th>
+                    <th id="selectTypeDamage">
+                        <%--<select name="typeDamage" id="typeDamage">
+                            <option>неисправность 1</option>
+                            <option>неисправность 2</option>
+                            <option>неисправность 3</option>
+                        </select>--%>
+                    </th>
+                    <th><button type="button" onclick="OpenTroubleReport($('#idDamagedTaxofon').val(),$('#typeDamage').val())">OK</button></th>
+                </tr>
+                <tr>
+                    <th>Закрыть заявку</th>
+                    <th> <input id="idRepairedTaxofon" value="ID"> </th>
+                    <th></th>
+                    <th><button type="button" onclick="CloseTroubleReport($('#idRepairedTaxofon').val())">OK</button></th>
+                </tr>
+            </table>
+        </div>
+    </div>
 </div>
 </body>
 <%@ include file = "footer.jsp" %>

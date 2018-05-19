@@ -2569,3 +2569,466 @@ No mapping found for HTTP request with URI [/resources/demos/style.css] in Dispa
 HHH000397: Using ASTQueryTranslatorFactory
 Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Fri May 18 21:23:56 MSK 2018]; parent: Root WebApplicationContext
 Closing Root WebApplicationContext: startup date [Fri May 18 21:23:54 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat May 19 12:28:26 MSK 2018]; root of context hierarchy
+Registering annotated classes: [class ru.taxofon.config.application.WebConfig]
+Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=hibernateConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/HibernateConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=appConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/application/AppConfig.class]]
+Bean 'hibernateConfig' of type [ru.taxofon.config.HibernateConfig$$EnhancerBySpringCGLIB$$31494dd9] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Loaded JDBC driver: org.mariadb.jdbc.Driver
+HHH000412: Hibernate Core {5.2.16.Final}
+HHH000205: Loaded properties from resource hibernate.properties: {hibernate.user=dba, hibernate.dialect=org.hibernate.dialect.MariaDBDialect, hibernate.format_sql=true, hibernate.hbm2ddl.auto=update, hibernate.url=jdbc:mariadb://localhost:3306/taxofon, hibernate.driver=org.mariadb.jdbc.Driver, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.password=sql}
+HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@831747b] of Hibernate SessionFactory for HibernateTransactionManager
+Mapped "{[/damagetype]}" onto public java.lang.String ru.taxofon.controller.AppController.damageType()
+Mapped "{[/]}" onto public java.lang.String ru.taxofon.controller.AppController.helloPage()
+Mapped "{[/dmgdescription/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.addEmployee(ru.taxofon.entity.DamageDescription)
+Mapped "{[/dmgdescription/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageDescription> ru.taxofon.controller.DamageDescriptionController.getDamageDescriptions()
+Mapped "{[/dmgdescription/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.getDamageDescriptionById(java.lang.String)
+Mapped "{[/dmgdescription/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.deleteDamageDescription(java.lang.String)
+Mapped "{[/dmgdescription/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.updDamageDescription(ru.taxofon.entity.DamageDescription)
+Mapped "{[/damage/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.addEmployee(ru.taxofon.entity.DamageList)
+Mapped "{[/damage/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageList> ru.taxofon.controller.DamageListController.getDamageLists()
+Mapped "{[/damage/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.getDamageListById(java.lang.String)
+Mapped "{[/damage/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.deleteDamageList(java.lang.String)
+Mapped "{[/damage/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.updDamageList(ru.taxofon.entity.DamageList)
+Mapped "{[/taxofon/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.addEmployee(ru.taxofon.entity.TaxofonList)
+Mapped "{[/taxofon/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.TaxofonList> ru.taxofon.controller.TaxofonListController.getAllTaxofonLists()
+Mapped "{[/taxofon/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.getTaxofonListById(java.lang.String)
+Mapped "{[/taxofon/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.deleteTaxofonList(java.lang.String)
+Mapped "{[/taxofon/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.updTaxofonList(ru.taxofon.entity.TaxofonList)
+Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sat May 19 12:28:26 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization completed in 2109 ms
+FrameworkServlet 'dispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 12:28:28 MSK 2018]; parent: Root WebApplicationContext
+FrameworkServlet 'dispatcher': initialization completed in 36 ms
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+HHH000397: Using ASTQueryTranslatorFactory
+No mapping found for HTTP request with URI [/favicon.ico] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 12:28:28 MSK 2018]; parent: Root WebApplicationContext
+Closing Root WebApplicationContext: startup date [Sat May 19 12:28:26 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat May 19 13:13:39 MSK 2018]; root of context hierarchy
+Registering annotated classes: [class ru.taxofon.config.application.WebConfig]
+Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=hibernateConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/HibernateConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=appConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/application/AppConfig.class]]
+Bean 'hibernateConfig' of type [ru.taxofon.config.HibernateConfig$$EnhancerBySpringCGLIB$$b3ed5add] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Loaded JDBC driver: org.mariadb.jdbc.Driver
+HHH000412: Hibernate Core {5.2.16.Final}
+HHH000205: Loaded properties from resource hibernate.properties: {hibernate.user=dba, hibernate.dialect=org.hibernate.dialect.MariaDBDialect, hibernate.format_sql=true, hibernate.hbm2ddl.auto=update, hibernate.url=jdbc:mariadb://localhost:3306/taxofon, hibernate.driver=org.mariadb.jdbc.Driver, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.password=sql}
+HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@6dff621e] of Hibernate SessionFactory for HibernateTransactionManager
+Mapped "{[/damagetype]}" onto public java.lang.String ru.taxofon.controller.AppController.damageType()
+Mapped "{[/]}" onto public java.lang.String ru.taxofon.controller.AppController.helloPage()
+Mapped "{[/dmgdescription/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.addEmployee(ru.taxofon.entity.DamageDescription)
+Mapped "{[/dmgdescription/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageDescription> ru.taxofon.controller.DamageDescriptionController.getDamageDescriptions()
+Mapped "{[/dmgdescription/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.getDamageDescriptionById(java.lang.String)
+Mapped "{[/dmgdescription/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.deleteDamageDescription(java.lang.String)
+Mapped "{[/dmgdescription/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.updDamageDescription(ru.taxofon.entity.DamageDescription)
+Mapped "{[/damage/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.addEmployee(ru.taxofon.entity.DamageList)
+Mapped "{[/damage/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageList> ru.taxofon.controller.DamageListController.getDamageLists()
+Mapped "{[/damage/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.getDamageListById(java.lang.String)
+Mapped "{[/damage/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.deleteDamageList(java.lang.String)
+Mapped "{[/damage/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.updDamageList(ru.taxofon.entity.DamageList)
+Mapped "{[/taxofon/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.addEmployee(ru.taxofon.entity.TaxofonList)
+Mapped "{[/taxofon/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.TaxofonList> ru.taxofon.controller.TaxofonListController.getAllTaxofonLists()
+Mapped "{[/taxofon/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.getTaxofonListById(java.lang.String)
+Mapped "{[/taxofon/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.deleteTaxofonList(java.lang.String)
+Mapped "{[/taxofon/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.updTaxofonList(ru.taxofon.entity.TaxofonList)
+Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sat May 19 13:13:39 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization completed in 1673 ms
+FrameworkServlet 'dispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 13:13:41 MSK 2018]; parent: Root WebApplicationContext
+FrameworkServlet 'dispatcher': initialization completed in 34 ms
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+HHH000397: Using ASTQueryTranslatorFactory
+Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 13:13:41 MSK 2018]; parent: Root WebApplicationContext
+Closing Root WebApplicationContext: startup date [Sat May 19 13:13:39 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat May 19 13:22:54 MSK 2018]; root of context hierarchy
+Registering annotated classes: [class ru.taxofon.config.application.WebConfig]
+Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=hibernateConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/HibernateConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=appConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/application/AppConfig.class]]
+Bean 'hibernateConfig' of type [ru.taxofon.config.HibernateConfig$$EnhancerBySpringCGLIB$$62188030] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Loaded JDBC driver: org.mariadb.jdbc.Driver
+HHH000412: Hibernate Core {5.2.16.Final}
+HHH000205: Loaded properties from resource hibernate.properties: {hibernate.user=dba, hibernate.dialect=org.hibernate.dialect.MariaDBDialect, hibernate.format_sql=true, hibernate.hbm2ddl.auto=update, hibernate.url=jdbc:mariadb://localhost:3306/taxofon, hibernate.driver=org.mariadb.jdbc.Driver, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.password=sql}
+HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@18286435] of Hibernate SessionFactory for HibernateTransactionManager
+Mapped "{[/damagetype]}" onto public java.lang.String ru.taxofon.controller.AppController.damageType()
+Mapped "{[/]}" onto public java.lang.String ru.taxofon.controller.AppController.helloPage()
+Mapped "{[/dmgdescription/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.addEmployee(ru.taxofon.entity.DamageDescription)
+Mapped "{[/dmgdescription/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageDescription> ru.taxofon.controller.DamageDescriptionController.getDamageDescriptions()
+Mapped "{[/dmgdescription/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.getDamageDescriptionById(java.lang.String)
+Mapped "{[/dmgdescription/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.deleteDamageDescription(java.lang.String)
+Mapped "{[/dmgdescription/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.updDamageDescription(ru.taxofon.entity.DamageDescription)
+Mapped "{[/damage/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.addEmployee(ru.taxofon.entity.DamageList)
+Mapped "{[/damage/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageList> ru.taxofon.controller.DamageListController.getDamageLists()
+Mapped "{[/damage/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.getDamageListById(java.lang.String)
+Mapped "{[/damage/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.deleteDamageList(java.lang.String)
+Mapped "{[/damage/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.updDamageList(ru.taxofon.entity.DamageList)
+Mapped "{[/taxofon/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.addEmployee(ru.taxofon.entity.TaxofonList)
+Mapped "{[/taxofon/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.TaxofonList> ru.taxofon.controller.TaxofonListController.getAllTaxofonLists()
+Mapped "{[/taxofon/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.getTaxofonListById(java.lang.String)
+Mapped "{[/taxofon/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.deleteTaxofonList(java.lang.String)
+Mapped "{[/taxofon/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.updTaxofonList(ru.taxofon.entity.TaxofonList)
+Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sat May 19 13:22:54 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization completed in 1843 ms
+FrameworkServlet 'dispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 13:22:56 MSK 2018]; parent: Root WebApplicationContext
+FrameworkServlet 'dispatcher': initialization completed in 32 ms
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+HHH000397: Using ASTQueryTranslatorFactory
+Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 13:22:56 MSK 2018]; parent: Root WebApplicationContext
+Closing Root WebApplicationContext: startup date [Sat May 19 13:22:54 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat May 19 13:23:51 MSK 2018]; root of context hierarchy
+Registering annotated classes: [class ru.taxofon.config.application.WebConfig]
+Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=hibernateConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/HibernateConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=appConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/application/AppConfig.class]]
+Bean 'hibernateConfig' of type [ru.taxofon.config.HibernateConfig$$EnhancerBySpringCGLIB$$d1bb093b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Loaded JDBC driver: org.mariadb.jdbc.Driver
+HHH000412: Hibernate Core {5.2.16.Final}
+HHH000205: Loaded properties from resource hibernate.properties: {hibernate.user=dba, hibernate.dialect=org.hibernate.dialect.MariaDBDialect, hibernate.format_sql=true, hibernate.hbm2ddl.auto=update, hibernate.url=jdbc:mariadb://localhost:3306/taxofon, hibernate.driver=org.mariadb.jdbc.Driver, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.password=sql}
+HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@5f7e9a80] of Hibernate SessionFactory for HibernateTransactionManager
+Mapped "{[/damagetype]}" onto public java.lang.String ru.taxofon.controller.AppController.damageType()
+Mapped "{[/]}" onto public java.lang.String ru.taxofon.controller.AppController.helloPage()
+Mapped "{[/dmgdescription/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.addEmployee(ru.taxofon.entity.DamageDescription)
+Mapped "{[/dmgdescription/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageDescription> ru.taxofon.controller.DamageDescriptionController.getDamageDescriptions()
+Mapped "{[/dmgdescription/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.getDamageDescriptionById(java.lang.String)
+Mapped "{[/dmgdescription/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.deleteDamageDescription(java.lang.String)
+Mapped "{[/dmgdescription/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.updDamageDescription(ru.taxofon.entity.DamageDescription)
+Mapped "{[/damage/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.addEmployee(ru.taxofon.entity.DamageList)
+Mapped "{[/damage/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageList> ru.taxofon.controller.DamageListController.getDamageLists()
+Mapped "{[/damage/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.getDamageListById(java.lang.String)
+Mapped "{[/damage/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.deleteDamageList(java.lang.String)
+Mapped "{[/damage/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.updDamageList(ru.taxofon.entity.DamageList)
+Mapped "{[/taxofon/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.addEmployee(ru.taxofon.entity.TaxofonList)
+Mapped "{[/taxofon/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.TaxofonList> ru.taxofon.controller.TaxofonListController.getAllTaxofonLists()
+Mapped "{[/taxofon/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.getTaxofonListById(java.lang.String)
+Mapped "{[/taxofon/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.deleteTaxofonList(java.lang.String)
+Mapped "{[/taxofon/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.updTaxofonList(ru.taxofon.entity.TaxofonList)
+Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sat May 19 13:23:51 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization completed in 1802 ms
+FrameworkServlet 'dispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 13:23:53 MSK 2018]; parent: Root WebApplicationContext
+FrameworkServlet 'dispatcher': initialization completed in 32 ms
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+HHH000397: Using ASTQueryTranslatorFactory
+Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 13:23:53 MSK 2018]; parent: Root WebApplicationContext
+Closing Root WebApplicationContext: startup date [Sat May 19 13:23:51 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat May 19 14:15:12 MSK 2018]; root of context hierarchy
+Registering annotated classes: [class ru.taxofon.config.application.WebConfig]
+Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=hibernateConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/HibernateConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=appConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/application/AppConfig.class]]
+Bean 'hibernateConfig' of type [ru.taxofon.config.HibernateConfig$$EnhancerBySpringCGLIB$$15954042] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Loaded JDBC driver: org.mariadb.jdbc.Driver
+HHH000412: Hibernate Core {5.2.16.Final}
+HHH000205: Loaded properties from resource hibernate.properties: {hibernate.user=dba, hibernate.dialect=org.hibernate.dialect.MariaDBDialect, hibernate.format_sql=true, hibernate.hbm2ddl.auto=update, hibernate.url=jdbc:mariadb://localhost:3306/taxofon, hibernate.driver=org.mariadb.jdbc.Driver, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.password=sql}
+HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@15b3a56d] of Hibernate SessionFactory for HibernateTransactionManager
+Mapped "{[/damagetype]}" onto public java.lang.String ru.taxofon.controller.AppController.damageType()
+Mapped "{[/]}" onto public java.lang.String ru.taxofon.controller.AppController.helloPage()
+Mapped "{[/dmgdescription/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.addEmployee(ru.taxofon.entity.DamageDescription)
+Mapped "{[/dmgdescription/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageDescription> ru.taxofon.controller.DamageDescriptionController.getDamageDescriptions()
+Mapped "{[/dmgdescription/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.getDamageDescriptionById(java.lang.String)
+Mapped "{[/dmgdescription/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.deleteDamageDescription(java.lang.String)
+Mapped "{[/dmgdescription/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.updDamageDescription(ru.taxofon.entity.DamageDescription)
+Mapped "{[/damage/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.addEmployee(ru.taxofon.entity.DamageList)
+Mapped "{[/damage/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageList> ru.taxofon.controller.DamageListController.getDamageLists()
+Mapped "{[/damage/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.getDamageListById(java.lang.String)
+Mapped "{[/damage/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.deleteDamageList(java.lang.String)
+Mapped "{[/damage/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.updDamageList(ru.taxofon.entity.DamageList)
+Mapped "{[/taxofon/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.addEmployee(ru.taxofon.entity.TaxofonList)
+Mapped "{[/taxofon/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.TaxofonList> ru.taxofon.controller.TaxofonListController.getAllTaxofonLists()
+Mapped "{[/taxofon/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.getTaxofonListById(java.lang.String)
+Mapped "{[/taxofon/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.deleteTaxofonList(java.lang.String)
+Mapped "{[/taxofon/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.updTaxofonList(ru.taxofon.entity.TaxofonList)
+Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sat May 19 14:15:12 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization completed in 1670 ms
+FrameworkServlet 'dispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 14:15:14 MSK 2018]; parent: Root WebApplicationContext
+FrameworkServlet 'dispatcher': initialization completed in 31 ms
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+HHH000397: Using ASTQueryTranslatorFactory
+Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 14:15:14 MSK 2018]; parent: Root WebApplicationContext
+Closing Root WebApplicationContext: startup date [Sat May 19 14:15:12 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat May 19 14:19:56 MSK 2018]; root of context hierarchy
+Registering annotated classes: [class ru.taxofon.config.application.WebConfig]
+Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=hibernateConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/HibernateConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=appConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/application/AppConfig.class]]
+Bean 'hibernateConfig' of type [ru.taxofon.config.HibernateConfig$$EnhancerBySpringCGLIB$$b9fa5e7c] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Loaded JDBC driver: org.mariadb.jdbc.Driver
+HHH000412: Hibernate Core {5.2.16.Final}
+HHH000205: Loaded properties from resource hibernate.properties: {hibernate.user=dba, hibernate.dialect=org.hibernate.dialect.MariaDBDialect, hibernate.format_sql=true, hibernate.hbm2ddl.auto=update, hibernate.url=jdbc:mariadb://localhost:3306/taxofon, hibernate.driver=org.mariadb.jdbc.Driver, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.password=sql}
+HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@6ba48de5] of Hibernate SessionFactory for HibernateTransactionManager
+Mapped "{[/damagetype]}" onto public java.lang.String ru.taxofon.controller.AppController.damageType()
+Mapped "{[/]}" onto public java.lang.String ru.taxofon.controller.AppController.helloPage()
+Mapped "{[/dmgdescription/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.addEmployee(ru.taxofon.entity.DamageDescription)
+Mapped "{[/dmgdescription/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageDescription> ru.taxofon.controller.DamageDescriptionController.getDamageDescriptions()
+Mapped "{[/dmgdescription/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.getDamageDescriptionById(java.lang.String)
+Mapped "{[/dmgdescription/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.deleteDamageDescription(java.lang.String)
+Mapped "{[/dmgdescription/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.updDamageDescription(ru.taxofon.entity.DamageDescription)
+Mapped "{[/damage/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.addEmployee(ru.taxofon.entity.DamageList)
+Mapped "{[/damage/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageList> ru.taxofon.controller.DamageListController.getDamageLists()
+Mapped "{[/damage/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.getDamageListById(java.lang.String)
+Mapped "{[/damage/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.deleteDamageList(java.lang.String)
+Mapped "{[/damage/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.updDamageList(ru.taxofon.entity.DamageList)
+Mapped "{[/taxofon/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.addEmployee(ru.taxofon.entity.TaxofonList)
+Mapped "{[/taxofon/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.TaxofonList> ru.taxofon.controller.TaxofonListController.getAllTaxofonLists()
+Mapped "{[/taxofon/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.getTaxofonListById(java.lang.String)
+Mapped "{[/taxofon/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.deleteTaxofonList(java.lang.String)
+Mapped "{[/taxofon/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.updTaxofonList(ru.taxofon.entity.TaxofonList)
+Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sat May 19 14:19:56 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization completed in 1643 ms
+FrameworkServlet 'dispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 14:19:58 MSK 2018]; parent: Root WebApplicationContext
+FrameworkServlet 'dispatcher': initialization completed in 29 ms
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+HHH000397: Using ASTQueryTranslatorFactory
+Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 14:19:58 MSK 2018]; parent: Root WebApplicationContext
+Closing Root WebApplicationContext: startup date [Sat May 19 14:19:56 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat May 19 14:24:56 MSK 2018]; root of context hierarchy
+Registering annotated classes: [class ru.taxofon.config.application.WebConfig]
+Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=hibernateConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/HibernateConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=appConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/application/AppConfig.class]]
+Bean 'hibernateConfig' of type [ru.taxofon.config.HibernateConfig$$EnhancerBySpringCGLIB$$5454cfa3] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Loaded JDBC driver: org.mariadb.jdbc.Driver
+HHH000412: Hibernate Core {5.2.16.Final}
+HHH000205: Loaded properties from resource hibernate.properties: {hibernate.user=dba, hibernate.dialect=org.hibernate.dialect.MariaDBDialect, hibernate.format_sql=true, hibernate.hbm2ddl.auto=update, hibernate.url=jdbc:mariadb://localhost:3306/taxofon, hibernate.driver=org.mariadb.jdbc.Driver, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.password=sql}
+HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@403b868] of Hibernate SessionFactory for HibernateTransactionManager
+Mapped "{[/damagetype]}" onto public java.lang.String ru.taxofon.controller.AppController.damageType()
+Mapped "{[/]}" onto public java.lang.String ru.taxofon.controller.AppController.helloPage()
+Mapped "{[/dmgdescription/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.addEmployee(ru.taxofon.entity.DamageDescription)
+Mapped "{[/dmgdescription/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageDescription> ru.taxofon.controller.DamageDescriptionController.getDamageDescriptions()
+Mapped "{[/dmgdescription/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.getDamageDescriptionById(java.lang.String)
+Mapped "{[/dmgdescription/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.deleteDamageDescription(java.lang.String)
+Mapped "{[/dmgdescription/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.updDamageDescription(ru.taxofon.entity.DamageDescription)
+Mapped "{[/damage/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.addEmployee(ru.taxofon.entity.DamageList)
+Mapped "{[/damage/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageList> ru.taxofon.controller.DamageListController.getDamageLists()
+Mapped "{[/damage/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.getDamageListById(java.lang.String)
+Mapped "{[/damage/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.deleteDamageList(java.lang.String)
+Mapped "{[/damage/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.updDamageList(ru.taxofon.entity.DamageList)
+Mapped "{[/taxofon/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.addEmployee(ru.taxofon.entity.TaxofonList)
+Mapped "{[/taxofon/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.TaxofonList> ru.taxofon.controller.TaxofonListController.getAllTaxofonLists()
+Mapped "{[/taxofon/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.getTaxofonListById(java.lang.String)
+Mapped "{[/taxofon/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.deleteTaxofonList(java.lang.String)
+Mapped "{[/taxofon/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.updTaxofonList(ru.taxofon.entity.TaxofonList)
+Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sat May 19 14:24:56 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization completed in 1784 ms
+FrameworkServlet 'dispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 14:24:57 MSK 2018]; parent: Root WebApplicationContext
+FrameworkServlet 'dispatcher': initialization completed in 30 ms
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+HHH000397: Using ASTQueryTranslatorFactory
+Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 14:24:57 MSK 2018]; parent: Root WebApplicationContext
+Closing Root WebApplicationContext: startup date [Sat May 19 14:24:56 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat May 19 14:27:38 MSK 2018]; root of context hierarchy
+Registering annotated classes: [class ru.taxofon.config.application.WebConfig]
+Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=hibernateConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/HibernateConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=appConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/application/AppConfig.class]]
+Bean 'hibernateConfig' of type [ru.taxofon.config.HibernateConfig$$EnhancerBySpringCGLIB$$4e766a44] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Loaded JDBC driver: org.mariadb.jdbc.Driver
+HHH000412: Hibernate Core {5.2.16.Final}
+HHH000205: Loaded properties from resource hibernate.properties: {hibernate.user=dba, hibernate.dialect=org.hibernate.dialect.MariaDBDialect, hibernate.format_sql=true, hibernate.hbm2ddl.auto=update, hibernate.url=jdbc:mariadb://localhost:3306/taxofon, hibernate.driver=org.mariadb.jdbc.Driver, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.password=sql}
+HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@4b98de47] of Hibernate SessionFactory for HibernateTransactionManager
+Mapped "{[/damagetype]}" onto public java.lang.String ru.taxofon.controller.AppController.damageType()
+Mapped "{[/]}" onto public java.lang.String ru.taxofon.controller.AppController.helloPage()
+Mapped "{[/dmgdescription/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.addEmployee(ru.taxofon.entity.DamageDescription)
+Mapped "{[/dmgdescription/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageDescription> ru.taxofon.controller.DamageDescriptionController.getDamageDescriptions()
+Mapped "{[/dmgdescription/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.getDamageDescriptionById(java.lang.String)
+Mapped "{[/dmgdescription/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.deleteDamageDescription(java.lang.String)
+Mapped "{[/dmgdescription/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.updDamageDescription(ru.taxofon.entity.DamageDescription)
+Mapped "{[/damage/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.addEmployee(ru.taxofon.entity.DamageList)
+Mapped "{[/damage/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageList> ru.taxofon.controller.DamageListController.getDamageLists()
+Mapped "{[/damage/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.getDamageListById(java.lang.String)
+Mapped "{[/damage/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.deleteDamageList(java.lang.String)
+Mapped "{[/damage/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.updDamageList(ru.taxofon.entity.DamageList)
+Mapped "{[/taxofon/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.addEmployee(ru.taxofon.entity.TaxofonList)
+Mapped "{[/taxofon/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.TaxofonList> ru.taxofon.controller.TaxofonListController.getAllTaxofonLists()
+Mapped "{[/taxofon/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.getTaxofonListById(java.lang.String)
+Mapped "{[/taxofon/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.deleteTaxofonList(java.lang.String)
+Mapped "{[/taxofon/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.updTaxofonList(ru.taxofon.entity.TaxofonList)
+Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sat May 19 14:27:38 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization completed in 1831 ms
+FrameworkServlet 'dispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 14:27:39 MSK 2018]; parent: Root WebApplicationContext
+FrameworkServlet 'dispatcher': initialization completed in 32 ms
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+HHH000397: Using ASTQueryTranslatorFactory
+Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 14:27:39 MSK 2018]; parent: Root WebApplicationContext
+Closing Root WebApplicationContext: startup date [Sat May 19 14:27:38 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat May 19 14:29:00 MSK 2018]; root of context hierarchy
+Registering annotated classes: [class ru.taxofon.config.application.WebConfig]
+Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=hibernateConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/HibernateConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=appConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/application/AppConfig.class]]
+Bean 'hibernateConfig' of type [ru.taxofon.config.HibernateConfig$$EnhancerBySpringCGLIB$$942dfda0] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Loaded JDBC driver: org.mariadb.jdbc.Driver
+HHH000412: Hibernate Core {5.2.16.Final}
+HHH000205: Loaded properties from resource hibernate.properties: {hibernate.user=dba, hibernate.dialect=org.hibernate.dialect.MariaDBDialect, hibernate.format_sql=true, hibernate.hbm2ddl.auto=update, hibernate.url=jdbc:mariadb://localhost:3306/taxofon, hibernate.driver=org.mariadb.jdbc.Driver, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.password=sql}
+HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@716b5205] of Hibernate SessionFactory for HibernateTransactionManager
+Mapped "{[/damagetype]}" onto public java.lang.String ru.taxofon.controller.AppController.damageType()
+Mapped "{[/]}" onto public java.lang.String ru.taxofon.controller.AppController.helloPage()
+Mapped "{[/dmgdescription/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.addEmployee(ru.taxofon.entity.DamageDescription)
+Mapped "{[/dmgdescription/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageDescription> ru.taxofon.controller.DamageDescriptionController.getDamageDescriptions()
+Mapped "{[/dmgdescription/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.getDamageDescriptionById(java.lang.String)
+Mapped "{[/dmgdescription/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.deleteDamageDescription(java.lang.String)
+Mapped "{[/dmgdescription/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.updDamageDescription(ru.taxofon.entity.DamageDescription)
+Mapped "{[/damage/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.addEmployee(ru.taxofon.entity.DamageList)
+Mapped "{[/damage/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageList> ru.taxofon.controller.DamageListController.getDamageLists()
+Mapped "{[/damage/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.getDamageListById(java.lang.String)
+Mapped "{[/damage/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.deleteDamageList(java.lang.String)
+Mapped "{[/damage/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.updDamageList(ru.taxofon.entity.DamageList)
+Mapped "{[/taxofon/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.addEmployee(ru.taxofon.entity.TaxofonList)
+Mapped "{[/taxofon/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.TaxofonList> ru.taxofon.controller.TaxofonListController.getAllTaxofonLists()
+Mapped "{[/taxofon/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.getTaxofonListById(java.lang.String)
+Mapped "{[/taxofon/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.deleteTaxofonList(java.lang.String)
+Mapped "{[/taxofon/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.updTaxofonList(ru.taxofon.entity.TaxofonList)
+Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sat May 19 14:29:00 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization completed in 1687 ms
+FrameworkServlet 'dispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 14:29:02 MSK 2018]; parent: Root WebApplicationContext
+FrameworkServlet 'dispatcher': initialization completed in 32 ms
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+HHH000397: Using ASTQueryTranslatorFactory
+Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 14:29:02 MSK 2018]; parent: Root WebApplicationContext
+Closing Root WebApplicationContext: startup date [Sat May 19 14:29:00 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat May 19 17:43:02 MSK 2018]; root of context hierarchy
+Registering annotated classes: [class ru.taxofon.config.application.WebConfig]
+Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=hibernateConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/HibernateConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=appConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/application/AppConfig.class]]
+Bean 'hibernateConfig' of type [ru.taxofon.config.HibernateConfig$$EnhancerBySpringCGLIB$$9eeb2755] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Loaded JDBC driver: org.mariadb.jdbc.Driver
+HHH000412: Hibernate Core {5.2.16.Final}
+HHH000205: Loaded properties from resource hibernate.properties: {hibernate.user=dba, hibernate.dialect=org.hibernate.dialect.MariaDBDialect, hibernate.format_sql=true, hibernate.hbm2ddl.auto=update, hibernate.url=jdbc:mariadb://localhost:3306/taxofon, hibernate.driver=org.mariadb.jdbc.Driver, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.password=sql}
+HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@1ec6034c] of Hibernate SessionFactory for HibernateTransactionManager
+Mapped "{[/damagetype]}" onto public java.lang.String ru.taxofon.controller.AppController.damageType()
+Mapped "{[/]}" onto public java.lang.String ru.taxofon.controller.AppController.helloPage()
+Mapped "{[/dmgdescription/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.addEmployee(ru.taxofon.entity.DamageDescription)
+Mapped "{[/dmgdescription/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageDescription> ru.taxofon.controller.DamageDescriptionController.getDamageDescriptions()
+Mapped "{[/dmgdescription/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.getDamageDescriptionById(java.lang.String)
+Mapped "{[/dmgdescription/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.deleteDamageDescription(java.lang.String)
+Mapped "{[/dmgdescription/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.updDamageDescription(ru.taxofon.entity.DamageDescription)
+Mapped "{[/damage/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.addEmployee(ru.taxofon.entity.DamageList)
+Mapped "{[/damage/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageList> ru.taxofon.controller.DamageListController.getDamageLists()
+Mapped "{[/damage/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.getDamageListById(java.lang.String)
+Mapped "{[/damage/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.deleteDamageList(java.lang.String)
+Mapped "{[/damage/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.updDamageList(ru.taxofon.entity.DamageList)
+Mapped "{[/taxofon/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.addEmployee(ru.taxofon.entity.TaxofonList)
+Mapped "{[/taxofon/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.TaxofonList> ru.taxofon.controller.TaxofonListController.getAllTaxofonLists()
+Mapped "{[/taxofon/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.getTaxofonListById(java.lang.String)
+Mapped "{[/taxofon/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.deleteTaxofonList(java.lang.String)
+Mapped "{[/taxofon/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.updTaxofonList(ru.taxofon.entity.TaxofonList)
+Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sat May 19 17:43:02 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization completed in 1706 ms
+FrameworkServlet 'dispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 17:43:04 MSK 2018]; parent: Root WebApplicationContext
+FrameworkServlet 'dispatcher': initialization completed in 31 ms
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+HHH000397: Using ASTQueryTranslatorFactory
+Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 17:43:04 MSK 2018]; parent: Root WebApplicationContext
+Closing Root WebApplicationContext: startup date [Sat May 19 17:43:02 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat May 19 18:07:57 MSK 2018]; root of context hierarchy
+Registering annotated classes: [class ru.taxofon.config.application.WebConfig]
+Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=hibernateConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/HibernateConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=appConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/application/AppConfig.class]]
+Bean 'hibernateConfig' of type [ru.taxofon.config.HibernateConfig$$EnhancerBySpringCGLIB$$21a9b97b] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Loaded JDBC driver: org.mariadb.jdbc.Driver
+HHH000412: Hibernate Core {5.2.16.Final}
+HHH000205: Loaded properties from resource hibernate.properties: {hibernate.user=dba, hibernate.dialect=org.hibernate.dialect.MariaDBDialect, hibernate.format_sql=true, hibernate.hbm2ddl.auto=update, hibernate.url=jdbc:mariadb://localhost:3306/taxofon, hibernate.driver=org.mariadb.jdbc.Driver, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.password=sql}
+HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@439501ba] of Hibernate SessionFactory for HibernateTransactionManager
+Mapped "{[/damagetype]}" onto public java.lang.String ru.taxofon.controller.AppController.damageType()
+Mapped "{[/]}" onto public java.lang.String ru.taxofon.controller.AppController.helloPage()
+Mapped "{[/dmgdescription/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.addEmployee(ru.taxofon.entity.DamageDescription)
+Mapped "{[/dmgdescription/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageDescription> ru.taxofon.controller.DamageDescriptionController.getDamageDescriptions()
+Mapped "{[/dmgdescription/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.getDamageDescriptionById(java.lang.String)
+Mapped "{[/dmgdescription/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.deleteDamageDescription(java.lang.String)
+Mapped "{[/dmgdescription/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.updDamageDescription(ru.taxofon.entity.DamageDescription)
+Mapped "{[/damage/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.addEmployee(ru.taxofon.entity.DamageList)
+Mapped "{[/damage/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageList> ru.taxofon.controller.DamageListController.getDamageLists()
+Mapped "{[/damage/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.getDamageListById(java.lang.String)
+Mapped "{[/damage/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.deleteDamageList(java.lang.String)
+Mapped "{[/damage/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.updDamageList(ru.taxofon.entity.DamageList)
+Mapped "{[/taxofon/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.addEmployee(ru.taxofon.entity.TaxofonList)
+Mapped "{[/taxofon/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.TaxofonList> ru.taxofon.controller.TaxofonListController.getAllTaxofonLists()
+Mapped "{[/taxofon/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.getTaxofonListById(java.lang.String)
+Mapped "{[/taxofon/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.deleteTaxofonList(java.lang.String)
+Mapped "{[/taxofon/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.updTaxofonList(ru.taxofon.entity.TaxofonList)
+Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sat May 19 18:07:57 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization completed in 2552 ms
+FrameworkServlet 'dispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 18:08:00 MSK 2018]; parent: Root WebApplicationContext
+FrameworkServlet 'dispatcher': initialization completed in 31 ms
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+HHH000397: Using ASTQueryTranslatorFactory
+Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 18:08:00 MSK 2018]; parent: Root WebApplicationContext
+Closing Root WebApplicationContext: startup date [Sat May 19 18:07:57 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization started
+Refreshing Root WebApplicationContext: startup date [Sat May 19 18:22:45 MSK 2018]; root of context hierarchy
+Registering annotated classes: [class ru.taxofon.config.application.WebConfig]
+Overriding bean definition for bean 'dataSource' with a different definition: replacing [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=hibernateConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/HibernateConfig.class]] with [Root bean: class [null]; scope=; abstract=false; lazyInit=false; autowireMode=3; dependencyCheck=0; autowireCandidate=true; primary=false; factoryBeanName=appConfig; factoryMethodName=dataSource; initMethodName=null; destroyMethodName=(inferred); defined in class path resource [ru/taxofon/config/application/AppConfig.class]]
+Bean 'hibernateConfig' of type [ru.taxofon.config.HibernateConfig$$EnhancerBySpringCGLIB$$3453d67d] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+Loaded JDBC driver: org.mariadb.jdbc.Driver
+HHH000412: Hibernate Core {5.2.16.Final}
+HHH000205: Loaded properties from resource hibernate.properties: {hibernate.user=dba, hibernate.dialect=org.hibernate.dialect.MariaDBDialect, hibernate.format_sql=true, hibernate.hbm2ddl.auto=update, hibernate.url=jdbc:mariadb://localhost:3306/taxofon, hibernate.driver=org.mariadb.jdbc.Driver, hibernate.bytecode.use_reflection_optimizer=false, hibernate.show_sql=true, hibernate.password=sql}
+HCANN000001: Hibernate Commons Annotations {5.0.1.Final}
+HHH000400: Using dialect: org.hibernate.dialect.MariaDBDialect
+Using DataSource [org.springframework.jdbc.datasource.DriverManagerDataSource@263be7b9] of Hibernate SessionFactory for HibernateTransactionManager
+Mapped "{[/damagetype]}" onto public java.lang.String ru.taxofon.controller.AppController.damageType()
+Mapped "{[/]}" onto public java.lang.String ru.taxofon.controller.AppController.helloPage()
+Mapped "{[/dmgdescription/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.addEmployee(ru.taxofon.entity.DamageDescription)
+Mapped "{[/dmgdescription/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageDescription> ru.taxofon.controller.DamageDescriptionController.getDamageDescriptions()
+Mapped "{[/dmgdescription/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.getDamageDescriptionById(java.lang.String)
+Mapped "{[/dmgdescription/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.deleteDamageDescription(java.lang.String)
+Mapped "{[/dmgdescription/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageDescription ru.taxofon.controller.DamageDescriptionController.updDamageDescription(ru.taxofon.entity.DamageDescription)
+Mapped "{[/damage/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.DamageList> ru.taxofon.controller.DamageListController.getDamageLists()
+Mapped "{[/damage/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.getDamageListById(java.lang.String)
+Mapped "{[/damage/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.deleteDamageList(java.lang.String)
+Mapped "{[/damage/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.updDamageList(ru.taxofon.entity.DamageList)
+Mapped "{[/damage/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.DamageList ru.taxofon.controller.DamageListController.addEmployee(ru.taxofon.entity.DamageList)
+Mapped "{[/taxofon/all],methods=[GET],produces=[application/json;charset=utf-8]}" onto public java.util.List<ru.taxofon.entity.TaxofonList> ru.taxofon.controller.TaxofonListController.getAllTaxofonLists()
+Mapped "{[/taxofon/get/{id}],methods=[GET],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.getTaxofonListById(java.lang.String)
+Mapped "{[/taxofon/delete],methods=[DELETE],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.deleteTaxofonList(java.lang.String)
+Mapped "{[/taxofon/upd],methods=[PUT],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.updTaxofonList(ru.taxofon.entity.TaxofonList)
+Mapped "{[/taxofon/add],methods=[POST],produces=[application/json;charset=utf-8]}" onto public ru.taxofon.entity.TaxofonList ru.taxofon.controller.TaxofonListController.addEmployee(ru.taxofon.entity.TaxofonList)
+Looking for @ControllerAdvice: Root WebApplicationContext: startup date [Sat May 19 18:22:45 MSK 2018]; root of context hierarchy
+Root WebApplicationContext: initialization completed in 1885 ms
+FrameworkServlet 'dispatcher': initialization started
+Refreshing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Sat May 19 18:22:47 MSK 2018]; parent: Root WebApplicationContext
+FrameworkServlet 'dispatcher': initialization completed in 41 ms
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+HHH000397: Using ASTQueryTranslatorFactory
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'

@@ -1,15 +1,13 @@
 package ru.taxofon.controller;
 
 import org.junit.Test;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.MediaType;
+import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
 import ru.taxofon.entity.TaxofonList;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertThat;
 
 public class TaxofonListControllerIntegrationTest {
     private static final String ROOT = "http://localhost:8080/taxofon";
@@ -21,6 +19,18 @@ public class TaxofonListControllerIntegrationTest {
     @Test
     public void addTaxofonAndCheck(){
         TaxofonList taxofon = createTaxofon();
+    }
+
+    @Test
+    public void updTaxofonCore(){
+        RestTemplate template = new RestTemplate();
+        ResponseEntity<TaxofonList> responseEntity = template.exchange(
+                ROOT + GET_BY_ID + "/1",
+                HttpMethod.GET,
+                null,
+                TaxofonList.class
+        );
+        assertEquals("OK", responseEntity.getStatusCode().getReasonPhrase());
     }
 
     private TaxofonList createTaxofon() {

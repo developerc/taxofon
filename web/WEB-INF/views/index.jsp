@@ -141,7 +141,41 @@
     };
 
     var OpenTroubleReport = function (idDamagedTaxofon, typeDamage) {
-        alert(idDamagedTaxofon + '___' + typeDamage);
+        // alert(idDamagedTaxofon + '___' + typeDamage);
+        var JSONObject =  {
+            'description': typeDamage,
+            'taxofonList_id': idDamagedTaxofon
+        };
+        $.ajax({
+            type: 'POST',
+            url: service + "damage/add",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(JSONObject),
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                alert('неисправность добавлена');
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                alert('Ошибка добавления неисправности');
+            }
+        });
+    };
+
+    var GetTaxofonById = function (idTaxofon) {
+        $.ajax({
+            type: 'GET',
+            url: service + 'taxofon/get/' + idTaxofon,
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                // alert(JSON.stringify(result));
+                return result;
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                alert('Ошибка получения таксофона по ID');
+            }
+        });
     };
 
     window.onload = RestGetAllTaxofon;
@@ -208,7 +242,9 @@
                         </select>--%>
                     </th>
                     <th><button type="button" onclick="OpenTroubleReport($('#idDamagedTaxofon').val(),$('#typeDamage').val())">OK</button></th>
+                    <%--<th><button type="button" onclick="GetTaxofonById($('#idDamagedTaxofon').val())">OK</button></th>--%>
                 </tr>
+
                 <tr>
                     <th>Закрыть заявку</th>
                     <th> <input id="idRepairedTaxofon" value="ID"> </th>

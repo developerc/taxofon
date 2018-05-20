@@ -1,9 +1,6 @@
 package ru.taxofon.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -16,6 +13,18 @@ public class DamageList {
     private LocalDateTime dateTimeBegin;
     private LocalDateTime dateTimeEnd;
     private String krdid;
+
+    @ManyToOne
+    private TaxofonList taxofonList;
+
+
+    public TaxofonList getTaxofonList() {
+        return taxofonList;
+    }
+
+    public void setTaxofonList(TaxofonList taxofonList) {
+        this.taxofonList = taxofonList;
+    }
 
     public LocalDateTime getDateTimeBegin() {
         return dateTimeBegin;
@@ -32,6 +41,7 @@ public class DamageList {
     public void setDateTimeEnd(LocalDateTime dateTimeEnd) {
         this.dateTimeEnd = dateTimeEnd;
     }
+
 
     public String getKrdid() {
         return krdid;

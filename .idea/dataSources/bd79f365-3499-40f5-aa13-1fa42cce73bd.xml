@@ -891,63 +891,77 @@
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="223" parent="211" name="PRIMARY">
+    <column id="223" parent="211" name="taxofonList_id">
+      <Position>7</Position>
+      <DataType>bigint(20)|0</DataType>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="224" parent="211" name="FK8nih6u1wsnj7sgm0efltrnk4j">
+      <ColNames>taxofonList_id</ColNames>
+    </index>
+    <key id="225" parent="211" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="224" parent="212" name="id">
+    <foreign-key id="226" parent="211" name="FK8nih6u1wsnj7sgm0efltrnk4j">
+      <ColNames>taxofonList_id</ColNames>
+      <RefSchemaName>taxofon</RefSchemaName>
+      <RefTableName>TaxofonList</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="227" parent="212" name="id">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="225" parent="212" name="adres">
+    <column id="228" parent="212" name="adres">
       <Position>2</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="226" parent="212" name="krdid">
+    <column id="229" parent="212" name="krdid">
       <Position>3</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="227" parent="212" name="lat">
+    <column id="230" parent="212" name="lat">
       <Position>4</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="228" parent="212" name="lon">
+    <column id="231" parent="212" name="lon">
       <Position>5</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="229" parent="212" name="numsam">
+    <column id="232" parent="212" name="numsam">
       <Position>6</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="230" parent="212" name="tlfnum">
+    <column id="233" parent="212" name="tlfnum">
       <Position>7</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="231" parent="212" name="type">
+    <column id="234" parent="212" name="type">
       <Position>8</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="232" parent="212" name="version">
+    <column id="235" parent="212" name="version">
       <Position>9</Position>
       <DataType>varchar(255)|0</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="233" parent="212" name="PRIMARY">
+    <key id="236" parent="212" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>id</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="234" parent="213" name="next_val">
+    <column id="237" parent="213" name="next_val">
       <Position>1</Position>
       <DataType>bigint(20)|0</DataType>
       <ColumnKind>normal</ColumnKind>

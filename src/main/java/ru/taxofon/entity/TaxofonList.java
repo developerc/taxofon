@@ -1,9 +1,8 @@
 package ru.taxofon.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class TaxofonList {
@@ -19,6 +18,17 @@ public class TaxofonList {
     private String type;
     private String adres;
     private String version;
+
+    @OneToMany(mappedBy = "taxofonList", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    private List<DamageList> damageLists = new ArrayList<>();
+
+    public List<DamageList> getDamageLists() {
+        return damageLists;
+    }
+
+    public void setDamageLists(List<DamageList> damageLists) {
+        this.damageLists = damageLists;
+    }
 
     public String getVersion() {
         return version;

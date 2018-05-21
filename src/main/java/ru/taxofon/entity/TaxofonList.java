@@ -30,6 +30,12 @@ public class TaxofonList {
         this.damageLists = damageLists;
     }
 
+    public List<DamageList> addDamageList(DamageList damageList){
+        List<DamageList> listDL = getDamageLists();
+        listDL.add(damageList);
+        return listDL;
+    }
+
     public String getVersion() {
         return version;
     }

@@ -3,6 +3,7 @@ package ru.taxofon.controller;
 import org.junit.Test;
 import org.springframework.http.*;
 import org.springframework.web.client.RestTemplate;
+import ru.taxofon.entity.DamageList;
 import ru.taxofon.entity.TaxofonList;
 
 import static org.junit.Assert.assertEquals;
@@ -15,6 +16,7 @@ public class TaxofonListControllerIntegrationTest {
     private static final String ALL = "/all";
     private static final String GET_BY_ID = "/get";
     private static final String DELETE = "/delete";
+    private static final String PUT = "/upd";
 
     @Test
     public void addTaxofonAndCheck(){
@@ -24,6 +26,7 @@ public class TaxofonListControllerIntegrationTest {
     @Test
     public void updTaxofonCore(){
         RestTemplate template = new RestTemplate();
+        //получим экземпляр таксофона от сервера
         ResponseEntity<TaxofonList> responseEntity = template.exchange(
                 ROOT + GET_BY_ID + "/1",
                 HttpMethod.GET,
@@ -31,6 +34,26 @@ public class TaxofonListControllerIntegrationTest {
                 TaxofonList.class
         );
         assertEquals("OK", responseEntity.getStatusCode().getReasonPhrase());
+        System.out.println("tlfnum=" + responseEntity.getBody().getTlfnum());
+
+        DamageList damageList = new DamageList();
+        damageList.setTlfnum(responseEntity.getBody().getTlfnum());
+        damageList.setDescription("линейная неисправность");
+        System.out.println("responseEntity=" +responseEntity.getBody().getId() + " " + responseEntity.getBody().getTlfnum() + " " + responseEntity.getBody().getDamageLists());
+        responseEntity.getBody().addDamageList(damageList);
+        System.out.println("responseEntity_new=" +responseEntity.getBody().getId() + " " + responseEntity.getBody().getTlfnum() + " " + responseEntity.getBody().getDamageLists());
+        System.out.println("damageList=" + damageList);
+//        responseEntity.getBody().setDamageLists(responseEntity.getBody().getDamageLists().add);
+
+        //делаем Update таксофону новыми параметрами
+//        responseEntity.getBody().setTlfnum("95333");
+        ResponseEntity<TaxofonList> responseEntity2 = template.exchange(
+          ROOT + PUT,
+          HttpMethod.PUT,
+          responseEntity,
+                TaxofonList.class
+        );
+        System.out.println("responseEntity2=" +responseEntity2.getBody().getId() + " " + responseEntity2.getBody().getTlfnum() + " " + responseEntity2.getBody().getDamageLists());
     }
 
     private TaxofonList createTaxofon() {
@@ -58,11 +81,11 @@ public class TaxofonListControllerIntegrationTest {
     private TaxofonList prefillTaxofon() {
         TaxofonList taxofon = new TaxofonList();
 
-        taxofon.setAdres("Адрес1");
-        taxofon.setKrdid("250");
+        taxofon.setAdres("Адрес2");
+        taxofon.setKrdid("251");
         taxofon.setLat("45.123");
         taxofon.setLon("34.765");
-        taxofon.setTlfnum("95111");
+        taxofon.setTlfnum("95222");
         taxofon.setType("УТЭК-2");
         return taxofon;
     }

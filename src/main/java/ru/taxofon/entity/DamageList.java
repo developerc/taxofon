@@ -74,4 +74,17 @@ public class DamageList {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    @Override
+    public String toString() {
+        return "DamageList{" +
+                "id=" + id +
+                ", tlfnum='" + tlfnum + '\'' +
+                ", description='" + description + '\'' +
+                ", dateTimeBegin=" + dateTimeBegin +
+                ", dateTimeEnd=" + dateTimeEnd +
+                ", krdid='" + krdid + '\'' +
+                ", taxofonList=" + taxofonList +
+                '}';
+    }
 }

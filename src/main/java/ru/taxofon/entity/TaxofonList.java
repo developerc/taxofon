@@ -19,7 +19,7 @@ public class TaxofonList {
     private String adres;
     private String version;
 
-    @OneToMany(mappedBy = "taxofonList", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
     private List<DamageList> damageLists = new ArrayList<>();
 
     public List<DamageList> getDamageLists() {

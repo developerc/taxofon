@@ -3,6 +3,9 @@
 <!-- Page Content -->
 <script>
     var service = 'http://localhost:8080/';
+    var jsonObjTaxofon = {};
+    var jsonObjDamage = {};
+    var jsonArrDamage = [];
 
     var RestGetAllTaxofon = function () {
         $.ajax({
@@ -141,8 +144,20 @@
     };
 
     var OpenTroubleReport = function (idDamagedTaxofon, typeDamage) {
-        // alert(idDamagedTaxofon + '___' + typeDamage);
-        var JSONObject =  {
+        var idDmgTax = idDamagedTaxofon;
+        var typDmg = typeDamage;
+        // var jsonObjTaxofon = {};
+       // alert(idDmgTax + '___' + typDmg);
+        //получили экземпляр таксофона от сервера
+        GetTaxofonById(idDmgTax);
+        //добавляем неисправность в таблицу
+        PostDamage(typDmg);
+        //обьект неисправности приклеиваем к обьекту таксофона и делаем Update таксофона
+        PutJsonTaxofonAddDamage();
+        // alert(jsonObjTaxofon.tlfnum);
+        // alert(JSON.stringify(jsonObjTaxofon));
+        // alert(jsonObjTaxofon);
+       /* var JSONObject =  {
             'description': typeDamage,
             'taxofonList_id': idDamagedTaxofon
         };
@@ -159,7 +174,7 @@
             error: function (jqXHR, testStatus, errorThrown) {
                 alert('Ошибка добавления неисправности');
             }
-        });
+        });*/
     };
 
     var GetTaxofonById = function (idTaxofon) {
@@ -169,12 +184,48 @@
             dataType: 'json',
             async: false,
             success: function (result) {
-                // alert(JSON.stringify(result));
-                return result;
+                //alert(JSON.stringify(result));
+               // return result;
+                jsonObjTaxofon = result;
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 alert('Ошибка получения таксофона по ID');
             }
+        });
+    };
+    
+    var PostDamage = function (typDmg) {
+        var JSONObject =  {
+            'tlfnum':jsonObjTaxofon.tlfnum,
+            'description': typDmg,
+            'krdid': jsonObjTaxofon.adres
+        };
+        $.ajax({
+            type: 'POST',
+            url: service + "damage/add",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(JSONObject),
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                jsonObjDamage =result;
+                alert(JSON.stringify(jsonObjDamage));
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                alert('Ошибка добавления неисправности');
+            }
+        });
+    };
+    
+    var PutJsonTaxofonAddDamage = function () {
+        // jsonObjTaxofon.damageLists = jsonObjDamage;
+        // jsonObjTaxofon.damageLists.add(jsonObjDamage);
+        jsonArrDamage = jsonObjTaxofon.damageLists;
+        jsonArrDamage.push(jsonObjDamage);
+        jsonObjTaxofon.damageLists = jsonArrDamage;
+        alert(JSON.stringify(jsonObjTaxofon));
+        $.ajax({
+           //здесь будет тело PUT запроса
         });
     };
 

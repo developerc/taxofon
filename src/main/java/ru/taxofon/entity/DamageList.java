@@ -14,7 +14,7 @@ public class DamageList {
     private LocalDateTime dateTimeEnd;
     private String krdid;
 
-    @ManyToOne
+    /*@ManyToOne
     private TaxofonList taxofonList;
 
 
@@ -24,7 +24,7 @@ public class DamageList {
 
     public void setTaxofonList(TaxofonList taxofonList) {
         this.taxofonList = taxofonList;
-    }
+    }*/
 
     public LocalDateTime getDateTimeBegin() {
         return dateTimeBegin;
@@ -84,7 +84,6 @@ public class DamageList {
                 ", dateTimeBegin=" + dateTimeBegin +
                 ", dateTimeEnd=" + dateTimeEnd +
                 ", krdid='" + krdid + '\'' +
-                ", taxofonList=" + taxofonList +
                 '}';
     }
 }

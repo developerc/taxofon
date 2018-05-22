@@ -4225,3 +4225,5 @@ No mapping found for HTTP request with URI [/resources/demos/style.css] in Dispa
 No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
 No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
 No mapping found for HTTP request with URI [/resources/demos/style.css] in DispatcherServlet with name 'dispatcher'
+Closing WebApplicationContext for namespace 'dispatcher-servlet': startup date [Mon May 21 21:30:26 MSK 2018]; parent: Root WebApplicationContext
+Closing Root WebApplicationContext: startup date [Mon May 21 21:30:24 MSK 2018]; root of context hierarchy

@@ -209,7 +209,7 @@
             async: false,
             success: function (result) {
                 jsonObjDamage =result;
-                alert(JSON.stringify(jsonObjDamage));
+                // alert(JSON.stringify(jsonObjDamage));
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 alert('Ошибка добавления неисправности');
@@ -223,9 +223,21 @@
         jsonArrDamage = jsonObjTaxofon.damageLists;
         jsonArrDamage.push(jsonObjDamage);
         jsonObjTaxofon.damageLists = jsonArrDamage;
-        alert(JSON.stringify(jsonObjTaxofon));
+        // alert(JSON.stringify(jsonObjTaxofon));
         $.ajax({
            //здесь будет тело PUT запроса
+            type: 'PUT',
+            url: service + "taxofon/upd",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(jsonObjTaxofon),
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                alert(JSON.stringify(result));
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                alert('Ошибка добавления неисправности');
+            }
         });
     };
 

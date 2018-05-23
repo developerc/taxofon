@@ -91,6 +91,16 @@
         });
     } );
 
+    $( function() {
+        var now = new Date();
+        var year = now.getFullYear();
+        var month = now.getMonth();
+        var day = now.getDate();
+        $( "#datepicker" ).datepicker();
+        $( "#datepicker" ).datepicker("option", "dateFormat", "yy-mm-dd");
+        $("#datepicker").val(now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate());
+    } );
+
     var OpenModalForm = function () {
       $("#dialog").dialog('open');
     };
@@ -198,7 +208,8 @@
         var JSONObject =  {
             'tlfnum':jsonObjTaxofon.tlfnum,
             'description': typDmg,
-            'krdid': jsonObjTaxofon.adres
+            'krdid': jsonObjTaxofon.adres//,
+            // 'dateTimeBegin': "2018-05-23T13:50:00"
         };
         $.ajax({
             type: 'POST',
@@ -239,6 +250,10 @@
                 alert('Ошибка добавления неисправности');
             }
         });
+    };
+
+    var PutDateTimeNow = function () {
+
     };
 
     window.onload = RestGetAllTaxofon;
@@ -297,13 +312,9 @@
                 <tr>
                     <th>Открыть заявку</th>
                     <th> <input id="idDamagedTaxofon" value="ID"> </th>
-                    <th id="selectTypeDamage">
-                        <%--<select name="typeDamage" id="typeDamage">
-                            <option>неисправность 1</option>
-                            <option>неисправность 2</option>
-                            <option>неисправность 3</option>
-                        </select>--%>
-                    </th>
+                    <th id="selectTypeDamage"></th>
+                    <th>Date: <input type="text" id="datepicker" size="30"></th>
+
                     <th><button type="button" onclick="OpenTroubleReport($('#idDamagedTaxofon').val(),$('#typeDamage').val())">OK</button></th>
                     <%--<th><button type="button" onclick="GetTaxofonById($('#idDamagedTaxofon').val())">OK</button></th>--%>
                 </tr>
@@ -311,7 +322,7 @@
                 <tr>
                     <th>Закрыть заявку</th>
                     <th> <input id="idRepairedTaxofon" value="ID"> </th>
-                    <th></th>
+                    <%--<th></th>--%>
                     <th><button type="button" onclick="CloseTroubleReport($('#idRepairedTaxofon').val())">OK</button></th>
                 </tr>
             </table>

@@ -16,6 +16,11 @@ public class AppController {
         return "damagetype";
     }
 
+    @RequestMapping("/statistika")
+    public String statistika(){
+        return "statistika";
+    }
+
    /* @RequestMapping("/calendar")
     public String calendarPage(){
         return "calendar";

@@ -94,12 +94,21 @@
     $( function() {
         var now = new Date();
         var year = now.getFullYear();
-        var month = now.getMonth();
+        var month = now.getMonth() + 1;
         var day = now.getDate();
+        var hours = now.getHours();
+        var minutes = now.getMinutes();
+        var seconds = now.getSeconds();
+        if (month < 10){
+            month = "0" + month;
+        }
         $( "#datepicker" ).datepicker();
         $( "#datepicker" ).datepicker("option", "dateFormat", "yy-mm-dd");
-        $("#datepicker").val(now.getFullYear() + "-" + (now.getMonth()+1) + "-" + now.getDate());
+        $("#datepicker").val(year + "-" + month + "-" + day);
+
+        $("#timecurrent").val(hours + ":" + minutes);
     } );
+
 
     var OpenModalForm = function () {
       $("#dialog").dialog('open');
@@ -160,7 +169,7 @@
        // alert(idDmgTax + '___' + typDmg);
         //получили экземпляр таксофона от сервера
         GetTaxofonById(idDmgTax);
-        //добавляем неисправность в таблицу
+        //добавляем неисправность в таблицу неисправностей
         PostDamage(typDmg);
         //обьект неисправности приклеиваем к обьекту таксофона и делаем Update таксофона
         PutJsonTaxofonAddDamage();
@@ -205,11 +214,13 @@
     };
     
     var PostDamage = function (typDmg) {
+        var dtb = $("#datepicker").val() + "T" +$("#timecurrent").val();
         var JSONObject =  {
             'tlfnum':jsonObjTaxofon.tlfnum,
             'description': typDmg,
-            'krdid': jsonObjTaxofon.adres//,
+            'krdid': jsonObjTaxofon.adres,
             // 'dateTimeBegin': "2018-05-23T13:50:00"
+            'dateTimeBegin': dtb
         };
         $.ajax({
             type: 'POST',
@@ -220,7 +231,7 @@
             async: false,
             success: function (result) {
                 jsonObjDamage =result;
-                // alert(JSON.stringify(jsonObjDamage));
+                // alert("dateTimeBegin:" + dtb);
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 alert('Ошибка добавления неисправности');
@@ -244,7 +255,8 @@
             dataType: 'json',
             async: false,
             success: function (result) {
-                alert(JSON.stringify(result));
+                // alert(JSON.stringify(result));
+                alert("Заявка о неисправности добавлена")
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 alert('Ошибка добавления неисправности');
@@ -313,8 +325,8 @@
                     <th>Открыть заявку</th>
                     <th> <input id="idDamagedTaxofon" value="ID"> </th>
                     <th id="selectTypeDamage"></th>
-                    <th>Date: <input type="text" id="datepicker" size="30"></th>
-
+                    <th>Дата: <input type="text" id="datepicker" size="30"></th>
+                    <th>Время: <input id="timecurrent" type="text"></th>
                     <th><button type="button" onclick="OpenTroubleReport($('#idDamagedTaxofon').val(),$('#typeDamage').val())">OK</button></th>
                     <%--<th><button type="button" onclick="GetTaxofonById($('#idDamagedTaxofon').val())">OK</button></th>--%>
                 </tr>
@@ -328,6 +340,7 @@
             </table>
         </div>
     </div>
-</div>
+
+    </div>
 </body>
 <%@ include file = "footer.jsp" %>

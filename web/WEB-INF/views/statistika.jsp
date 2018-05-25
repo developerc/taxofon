@@ -62,8 +62,8 @@
                     // output += '<th>' + arrData[i].duration + '</' + 'th>';
 
                     if (arrData[i].dateTimeBegin !== null) {
-                        durTime = new Date(arrData[i].dateTimeBegin[0],arrData[i].dateTimeBegin[1],arrData[i].dateTimeBegin[2])
-                        output+= '<th>' +arrData[i].dateTimeBegin[0] +'</' + 'th>';
+                        durTime = new Date(arrData[i].dateTimeBegin[0],arrData[i].dateTimeBegin[1]-1,arrData[i].dateTimeBegin[2],arrData[i].dateTimeBegin[3],arrData[i].dateTimeBegin[4],0,0);
+                        output+= '<th>' +GetDuration(durTime) +'</' + 'th>';
                     } else {
                         output += '<th>' + "не задано" + '</' + 'th>';
                     }
@@ -146,7 +146,30 @@
     };
 
     var GetDuration = function (beginTime) {
+        var timeNow = new Date();
+        // var durTime = new Date(timeNow.getTime() - beginTime.getTime());
+        // var formatDurDate = durTime.getFullYear() + " yy, " + durTime.getMonth() + " mm" + durTime.getDate() + " dd," + durTime.getHours() + " hh," + durTime.getMinutes() + " min," + durTime.getSeconds() + " sec";
+        var durmlsc = timeNow.getTime() - beginTime.getTime();
+        var mlsc;
+        var sec;
+        var min;
+        var hr;
+        var dy;
+        var mnth;
+        var yer;
+        var quotient;
 
+        quotient = Math.floor(durmlsc/1000); //общее количество секунд 4691
+        mlsc = durmlsc - (quotient * 1000);
+        min = Math.floor(quotient / 60); //общее количество минут
+        sec = quotient - (min * 60);
+        quotient = Math.floor(min/60); //общее количество часов
+        min = min - (quotient * 60);
+        dy = Math.floor(quotient/24); //общее количество суток
+        hr = quotient - (dy * 24);
+
+
+        return dy + " дней, " + hr + " час, " + min + " мин, " + sec + " сек, " +mlsc + " млсек";
     };
 
     window.onload = RestGetAllDamages;

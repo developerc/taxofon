@@ -331,12 +331,11 @@
                     <%--<th><button type="button" onclick="GetTaxofonById($('#idDamagedTaxofon').val())">OK</button></th>--%>
                 </tr>
 
-                <tr>
+                <%--<tr>
                     <th>Закрыть заявку</th>
                     <th> <input id="idRepairedTaxofon" value="ID"> </th>
-                    <%--<th></th>--%>
                     <th><button type="button" onclick="CloseTroubleReport($('#idRepairedTaxofon').val())">OK</button></th>
-                </tr>
+                </tr>--%>
             </table>
         </div>
     </div>

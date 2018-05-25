@@ -12,19 +12,16 @@ public class DamageList {
     private String description;
     private LocalDateTime dateTimeBegin;
     private LocalDateTime dateTimeEnd;
+    private LocalDateTime duration;
     private String krdid;
 
-    /*@ManyToOne
-    private TaxofonList taxofonList;
-
-
-    public TaxofonList getTaxofonList() {
-        return taxofonList;
+    public LocalDateTime getDuration() {
+        return duration;
     }
 
-    public void setTaxofonList(TaxofonList taxofonList) {
-        this.taxofonList = taxofonList;
-    }*/
+    public void setDuration(LocalDateTime duration) {
+        this.duration = duration;
+    }
 
     public LocalDateTime getDateTimeBegin() {
         return dateTimeBegin;
@@ -41,7 +38,6 @@ public class DamageList {
     public void setDateTimeEnd(LocalDateTime dateTimeEnd) {
         this.dateTimeEnd = dateTimeEnd;
     }
-
 
     public String getKrdid() {
         return krdid;
@@ -83,6 +79,7 @@ public class DamageList {
                 ", description='" + description + '\'' +
                 ", dateTimeBegin=" + dateTimeBegin +
                 ", dateTimeEnd=" + dateTimeEnd +
+                ", duration=" + duration +
                 ", krdid='" + krdid + '\'' +
                 '}';
     }

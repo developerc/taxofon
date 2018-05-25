@@ -2,11 +2,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <script>
     var service = 'http://localhost:8080/';
-    var beginArrDamages = 0;
+    var blocksize = 10;
+    var endArrDamages = blocksize;
     var DmgCount = 0;
+    var jsonObjDamage = {};
 
     var RestGetAllDamages = function () {
+        var i = endArrDamages -blocksize;
         dtArr = [];
+        var durTime = 0;
         $.ajax({
             type: 'GET',
             url: service + 'damage/all',
@@ -27,11 +31,16 @@
                 output+= '<th>Описание неисправности</'+'th>';
                 output+= '<th>Дата время начало</'+'th>';
                 output+= '<th>Дата время окончание</'+'th>';
+                output+= '<th>Продолжительность</'+'th>';
                 output+= '<th>Адрес</'+'th>';
                 output+= '</' +'tr>';
 
                 // for (i = beginArrDamages; i < beginArrDamages+10; i++) {
-                 for (i in arrData) {
+                //  for (i in arrData) {
+                while (i < endArrDamages){
+                    if (i == DmgCount){
+                        break;
+                    }
                     output += '<tr>';
                     output += '<th>' + arrData[i].id + '</' + 'th>';
                     output += '<th>' + arrData[i].tlfnum + '</' + 'th>';
@@ -49,9 +58,19 @@
                     } else {
                         output += '<th>' + "не задано" + '</' + 'th>';
                     }
-                    //output += '<th>' + arrData[i].dateTimeEnd + '</' + 'th>';
+                    // output += '<th>' + arrData[i].duration + '</' + 'th>';
+                    // output += '<th>' + arrData[i].duration + '</' + 'th>';
+
+                    if (arrData[i].dateTimeBegin !== null) {
+                        durTime = new Date(arrData[i].dateTimeBegin[0],arrData[i].dateTimeBegin[1],arrData[i].dateTimeBegin[2])
+                        output+= '<th>' +arrData[i].dateTimeBegin[0] +'</' + 'th>';
+                    } else {
+                        output += '<th>' + "не задано" + '</' + 'th>';
+                    }
                     output += '<th>' + arrData[i].krdid + '</' + 'th>';
                     output += '</' + 'tr>';
+                    // beginArrDamages ++;
+                    i ++;
                 }
                 output+= '<tr>';
                 output+= '<th></'+'th>';
@@ -74,10 +93,60 @@
     };
 
     var ToRight = function () {
-     // if((beginArrDamages + 10) < DmgCount ){
-          beginArrDamages = beginArrDamages + 10;
-     // } ;
+     if(endArrDamages < DmgCount ){
+          endArrDamages = endArrDamages + blocksize;
+     } ;
         RestGetAllDamages();
+    };
+
+    var ToLeft = function () {
+        if((endArrDamages - blocksize) > 0) {
+            endArrDamages = endArrDamages - blocksize;
+        }
+        RestGetAllDamages();
+    };
+
+    var CloseTroubleReport = function (idDamage) {
+        var now = new Date();
+      $.ajax({
+          type: 'GET',
+          url: service + 'damage/get/' + idDamage,
+          dataType: 'json',
+          async: false,
+          success: function (result) {
+              alert(JSON.stringify(result));
+              jsonObjDamage = result;
+              // var now = new Date();
+              jsonObjDamage.dateTimeEnd = now;
+              alert(JSON.stringify(jsonObjDamage));
+              PutDamage();
+          },
+          error: function (jqXHR, testStatus, errorThrown) {
+              alert('Ошибка получения неисправности по ID');
+          }
+      });
+    };
+
+    var PutDamage = function () {
+        $.ajax({
+            type: 'PUT',
+            url: service + "damage/upd",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(jsonObjDamage),
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                // alert(JSON.stringify(result));
+                alert("Заявка о неисправности изменена")
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                alert('Ошибка добавления неисправности');
+            }
+        });
+    };
+
+    var GetDuration = function (beginTime) {
+
     };
 
     window.onload = RestGetAllDamages;
@@ -92,6 +161,12 @@
     <div class="panel-body">
         <table class="table-row-cell">
             <tr>
+                <th>Закрыть неисправность</th>
+                <th> <input id="idDamage" value="ID"> </th>
+                <th><button type="button" onclick="CloseTroubleReport($('#idDamage').val())">OK</button></th>
+            </tr>
+            <tr>
+                <th></th>
                 <th>Показать все неисправности</th>
                 <th><button type="button" onclick="RestGetAllDamages()">ОК</button></th>
             </tr>

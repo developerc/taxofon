@@ -33,6 +33,14 @@ public class DamageListController {
         return damageListService.getDamageListById(Long.parseLong(id));
     }
 
+
+    @RequestMapping(value = "/get/tlfnum/{tlfnum}/closed/{closed}", method = RequestMethod.GET, produces = "application/json;charset=utf-8")
+    @ResponseBody
+    public List<DamageList> getDamageByTlfNum(@PathVariable(value = "tlfnum") String tlfnum, @PathVariable(value = "closed") boolean closed){
+        // exception
+        return damageListService.getDamageByTlfNum(tlfnum, closed);
+    }
+
     // localhost:8080/cat/delete?id=5&name=Jack
     @RequestMapping(value = "/delete", method = RequestMethod.DELETE, produces = "application/json;charset=utf-8")
     @ResponseBody

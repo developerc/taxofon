@@ -61,7 +61,7 @@
                     // output += '<th>' + arrData[i].duration + '</' + 'th>';
                     // output += '<th>' + arrData[i].duration + '</' + 'th>';
 
-                    if (arrData[i].dateTimeBegin !== null) {
+                    if (arrData[i].dateTimeBegin !== null && arrData[i].dateTimeEnd == null) {
                         durTime = new Date(arrData[i].dateTimeBegin[0],arrData[i].dateTimeBegin[1]-1,arrData[i].dateTimeBegin[2],arrData[i].dateTimeBegin[3],arrData[i].dateTimeBegin[4],0,0);
                         output+= '<th>' +GetDuration(durTime) +'</' + 'th>';
                     } else {
@@ -114,11 +114,11 @@
           dataType: 'json',
           async: false,
           success: function (result) {
-              alert(JSON.stringify(result));
+              // alert(JSON.stringify(result));
               jsonObjDamage = result;
               // var now = new Date();
               jsonObjDamage.dateTimeEnd = now;
-              alert(JSON.stringify(jsonObjDamage));
+              // alert(JSON.stringify(jsonObjDamage));
               PutDamage();
           },
           error: function (jqXHR, testStatus, errorThrown) {
@@ -168,8 +168,7 @@
         dy = Math.floor(quotient/24); //общее количество суток
         hr = quotient - (dy * 24);
 
-
-        return dy + " дней, " + hr + " час, " + min + " мин, " + sec + " сек, " +mlsc + " млсек";
+        return dy + " дней, " + hr + " час, " + min + " мин, " + sec + " сек";
     };
 
     window.onload = RestGetAllDamages;

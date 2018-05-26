@@ -162,7 +162,7 @@
         });
     };
 
-    var OpenTroubleReport = function (idDamagedTaxofon, typeDamage) {
+    var  OpenTroubleReport = function (idDamagedTaxofon, typeDamage) {
         var idDmgTax = idDamagedTaxofon;
         var typDmg = typeDamage;
         // var jsonObjTaxofon = {};
@@ -203,7 +203,7 @@
             dataType: 'json',
             async: false,
             success: function (result) {
-                //alert(JSON.stringify(result));
+                // alert(JSON.stringify(result));
                // return result;
                 jsonObjTaxofon = result;
             },

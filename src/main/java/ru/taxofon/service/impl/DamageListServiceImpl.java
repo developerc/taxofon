@@ -37,4 +37,9 @@ public class DamageListServiceImpl implements DamageListService {
     public DamageList updDamageList(DamageList damageList) {
         return damageListDao.update(damageList);
     }
+
+    @Override
+    public List<DamageList> getDamageByTlfNum(String tlfnum, boolean closed) {
+        return damageListDao.getDamageByTlfNum(tlfnum, closed);
+    }
 }

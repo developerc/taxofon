@@ -43,4 +43,7 @@ public interface DamageListService {
      * @return updated damageList
      */
     DamageList updDamageList(DamageList damageList);
+
+    List<DamageList> getDamageByTlfNum(String tlfnum, boolean closed);
+
 }

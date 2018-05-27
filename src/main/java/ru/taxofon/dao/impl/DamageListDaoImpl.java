@@ -22,4 +22,27 @@ public class DamageListDaoImpl extends BasicDaoImpl<DamageList> implements Damag
         query.setParameter("tlfnum", tlfNum);
         return query.getResultList();
     }
+
+    @Override
+    public List<DamageList> getDamageByDescription(String description, boolean closed) {
+        Query query;
+        if (closed){
+            query = getSessionFactory().createQuery("SELECT d FROM DamageList as d WHERE d.description = :description");
+        } else {
+            query = getSessionFactory().createQuery("SELECT d FROM DamageList as d WHERE d.description = :description AND d.dateTimeEnd = null");
+        }
+        query.setParameter("description", description);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<DamageList> getDamageAll(boolean closed) {
+        Query query;
+        if (closed){
+            query = getSessionFactory().createQuery("SELECT d FROM DamageList as d");
+        } else {
+            query = getSessionFactory().createQuery("SELECT d FROM DamageList as d WHERE  d.dateTimeEnd = null");
+        }
+        return query.getResultList();
+    }
 }

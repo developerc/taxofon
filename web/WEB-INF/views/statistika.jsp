@@ -85,6 +85,7 @@
                 output+= '</' +'table>';
 
                 $('#response').html(output);
+                RestSetInputDamages();
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 $('#response').html(JSON.stringify(jqXHR))
@@ -159,7 +160,7 @@
         var yer;
         var quotient;
 
-        quotient = Math.floor(durmlsc/1000); //общее количество секунд 4691
+        quotient = Math.floor(durmlsc/1000); //общее количество секунд
         mlsc = durmlsc - (quotient * 1000);
         min = Math.floor(quotient / 60); //общее количество минут
         sec = quotient - (min * 60);
@@ -169,6 +170,97 @@
         hr = quotient - (dy * 24);
 
         return dy + " дней, " + hr + " час, " + min + " мин, " + sec + " сек";
+    };
+
+    var RestSetInputDamages = function () {
+        $.ajax({
+            type: 'GET',
+            url: service + 'dmgdescription/all',
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                var output = '';
+                var stringData = JSON.stringify(result);
+                var arrData = JSON.parse(stringData);
+                output+='<select name="typeDamage" id="typeDamage">';
+                for (i in arrData) {
+                    output+='<option>' + arrData[i].itemDamage + '</' + 'option>';
+                }
+                output+='</' + 'select>';
+                output+='<br><input id="idInputTlfNum" value="номер телефона">';
+                $('#selectTypeDamage').html(output);
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                $('#selectTypeDamage').html(JSON.stringify(jqXHR))
+            }
+        });
+    };
+
+    var FindDamages = function () {
+        var requestParam = '';
+        /*var myStr = '';
+        if ($('#closedCheck1').is(':checked')){
+            myStr+="Показывать закрытые неисправности выбран"
+        } else {
+            myStr+="Показывать закрытые неисправности не выбран"
+        }
+
+        if ($('#radio1').is(':checked')){
+            myStr+="; Выбран Radio1; "
+        }
+        if ($('#radio2').is(':checked')){
+            myStr+="; Выбран Radio2; "
+        }
+        if ($('#radio3').is(':checked')){
+            myStr+="; Выбран Radio3; "
+        }
+
+        myStr+=$('#typeDamage').val() + "; ";
+        myStr+=$('#idInputTlfNum').val();*/
+        //alert(myStr);
+        //Выбрано Radio кнопка "Выбрать все"
+        if ($('#radio1').is(':checked')){
+            requestParam += "damage/get/all/" + "closed/";
+            if ($('#closedCheck1').is(':checked')) {
+                requestParam += "true";
+            } else {
+                requestParam += "false";
+            }
+        }
+        //Выбрано Radio кнопка "Поиск по типу неисправности"
+        if ($('#radio2').is(':checked')){
+            requestParam += "damage/get/description/" + $('#typeDamage').val() + "/closed/";
+            if ($('#closedCheck1').is(':checked')) {
+                requestParam += "true";
+            } else {
+                requestParam += "false";
+            }
+        }
+        //Выбрано Radio кнопка "Поиск по номеру телефона"
+        if ($('#radio3').is(':checked')) {
+            requestParam += "damage/get/tlfnum/" + $('#idInputTlfNum').val() + "/closed/";
+            if ($('#closedCheck1').is(':checked')) {
+                requestParam += "true";
+            } else {
+                requestParam += "false";
+            }
+        }
+        // alert(service + requestParam);
+        $.ajax({
+            type: 'GET',
+            url: service + requestParam,
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                alert(JSON.stringify(result));
+                jsonObjDamage = result;
+                //здесь будем отрисовывать таблицу записей неисправностей
+
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                $('#response').html(JSON.stringify(jqXHR))
+            }
+        });
     };
 
     window.onload = RestGetAllDamages;
@@ -188,9 +280,35 @@
                 <th><button type="button" onclick="CloseTroubleReport($('#idDamage').val())">OK</button></th>
             </tr>
             <tr>
-                <th></th>
-                <th>Показать все неисправности</th>
-                <th><button type="button" onclick="RestGetAllDamages()">ОК</button></th>
+                <th>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="closedCheck1">
+                        <label class="form-check-label" for="closedCheck1">
+                            Показывать закрытые неисправности
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="findRadio" id="radio1" value="option1" checked>
+                        <label class="form-check-label" for="radio1">
+                            Выбрать все
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="findRadio" id="radio2" value="option2">
+                        <label class="form-check-label" for="radio2">
+                            Поиск по типу неисправности
+                        </label>
+                    </div>
+                    <div class="form-check disabled">
+                        <input class="form-check-input" type="radio" name="findRadio" id="radio3" value="option3">
+                        <label class="form-check-label" for="radio3">
+                            Поиск по номеру телефона
+                        </label>
+                    </div>
+
+                </th>
+                <th valign="bottom" id="selectTypeDamage"></th>
+                <th valign="bottom"><button type="button" onclick="FindDamages()">OK</button></th>
             </tr>
         </table>
         <div class="panel-body" id="response"></div>

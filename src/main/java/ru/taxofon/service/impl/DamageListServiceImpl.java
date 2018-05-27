@@ -42,4 +42,14 @@ public class DamageListServiceImpl implements DamageListService {
     public List<DamageList> getDamageByTlfNum(String tlfnum, boolean closed) {
         return damageListDao.getDamageByTlfNum(tlfnum, closed);
     }
+
+    @Override
+    public List<DamageList> getDamageByDescription(String description, boolean closed) {
+        return damageListDao.getDamageByDescription(description, closed);
+    }
+
+    @Override
+    public List<DamageList> getDamageAll(boolean closed) {
+        return damageListDao.getDamageAll(closed);
+    }
 }

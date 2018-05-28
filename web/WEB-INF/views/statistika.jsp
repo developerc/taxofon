@@ -6,85 +6,20 @@
     var endArrDamages = blocksize;
     var DmgCount = 0;
     var jsonObjDamage = {};
+    var dataArray = [];
 
     var RestGetAllDamages = function () {
-        var i = endArrDamages -blocksize;
-        dtArr = [];
-        var durTime = 0;
         $.ajax({
             type: 'GET',
             url: service + 'damage/all',
             dataType: 'json',
             async: false,
             success: function (result) {
-                var output = '';
                 var stringData = JSON.stringify(result);
-                 //output += '<br>' + stringData;
-                var arrData = JSON.parse(stringData);
-                DmgCount = arrData.length;
-               // alert("DmgCount=" + DmgCount);
+                dataArray = JSON.parse(stringData);
+                DmgCount = dataArray.length;
+                ShowDataTable();
 
-                output+= '<table class="table-row-cell" border="1">';
-                output+= '<tr>';
-                output+= '<th>ID</'+'th>';
-                output+= '<th>Тлф номер</'+'th>';
-                output+= '<th>Описание неисправности</'+'th>';
-                output+= '<th>Дата время начало</'+'th>';
-                output+= '<th>Дата время окончание</'+'th>';
-                output+= '<th>Продолжительность</'+'th>';
-                output+= '<th>Адрес</'+'th>';
-                output+= '</' +'tr>';
-
-                // for (i = beginArrDamages; i < beginArrDamages+10; i++) {
-                //  for (i in arrData) {
-                while (i < endArrDamages){
-                    if (i == DmgCount){
-                        break;
-                    }
-                    output += '<tr>';
-                    output += '<th>' + arrData[i].id + '</' + 'th>';
-                    output += '<th>' + arrData[i].tlfnum + '</' + 'th>';
-                    output += '<th>' + arrData[i].description + '</' + 'th>';
-                    // output += '<th>' + arrData[i].dateTimeBegin + '</' + 'th>';
-                    if (arrData[i].dateTimeBegin !== null) {
-                        dtArr = arrData[i].dateTimeBegin;
-                        output += '<th>' + dtArr[0] + '-' + (dtArr[1]<10?"0"+dtArr[1]:dtArr[1]) + '-' + dtArr[2] + ' ' + dtArr[3] + ':' + dtArr[4] +'</' + 'th>';
-                    } else {
-                        output += '<th>' + "не задано" + '</' + 'th>';
-                    }
-                    if (arrData[i].dateTimeEnd !== null) {
-                        dtArr = arrData[i].dateTimeEnd;
-                        output += '<th>' + dtArr[0] + '-' + (dtArr[1]<10?"0"+dtArr[1]:dtArr[1]) + '-' + dtArr[2] + ' ' + dtArr[3] + ':' + dtArr[4] +'</' + 'th>';
-                    } else {
-                        output += '<th>' + "не задано" + '</' + 'th>';
-                    }
-                    // output += '<th>' + arrData[i].duration + '</' + 'th>';
-                    // output += '<th>' + arrData[i].duration + '</' + 'th>';
-
-                    if (arrData[i].dateTimeBegin !== null && arrData[i].dateTimeEnd == null) {
-                        durTime = new Date(arrData[i].dateTimeBegin[0],arrData[i].dateTimeBegin[1]-1,arrData[i].dateTimeBegin[2],arrData[i].dateTimeBegin[3],arrData[i].dateTimeBegin[4],0,0);
-                        output+= '<th>' +GetDuration(durTime) +'</' + 'th>';
-                    } else {
-                        output += '<th>' + "не задано" + '</' + 'th>';
-                    }
-                    output += '<th>' + arrData[i].krdid + '</' + 'th>';
-                    output += '</' + 'tr>';
-                    // beginArrDamages ++;
-                    i ++;
-                }
-                output+= '<tr>';
-                output+= '<th></'+'th>';
-                output+= '<th><button type="button" onclick="ToLeft()">В начало</button></'+'th>';
-                output+= '<th><button type="button" onclick="ToRight()">В конец</button></'+'th>';
-                // output+= '<th>Описание неисправности</'+'th>';
-                output+= '<th></'+'th>';
-                output+= '<th></'+'th>';
-                output+= '<th></'+'th>';
-                output+= '</' +'tr>';
-
-                output+= '</' +'table>';
-
-                $('#response').html(output);
                 RestSetInputDamages();
             },
             error: function (jqXHR, testStatus, errorThrown) {
@@ -97,14 +32,16 @@
      if(endArrDamages < DmgCount ){
           endArrDamages = endArrDamages + blocksize;
      } ;
-        RestGetAllDamages();
+        // RestGetAllDamages();
+        ShowDataTable();
     };
 
     var ToLeft = function () {
         if((endArrDamages - blocksize) > 0) {
             endArrDamages = endArrDamages - blocksize;
         }
-        RestGetAllDamages();
+        // RestGetAllDamages();
+        ShowDataTable();
     };
 
     var CloseTroubleReport = function (idDamage) {
@@ -182,12 +119,12 @@
                 var output = '';
                 var stringData = JSON.stringify(result);
                 var arrData = JSON.parse(stringData);
-                output+='<select name="typeDamage" id="typeDamage">';
+                output+='<select name="typeDamage" id="typeDamage" onclick="ZeroingCounter()">';
                 for (i in arrData) {
                     output+='<option>' + arrData[i].itemDamage + '</' + 'option>';
                 }
                 output+='</' + 'select>';
-                output+='<br><input id="idInputTlfNum" value="номер телефона">';
+                output+='<br><input id="idInputTlfNum" value="номер телефона" onclick="ZeroingCounter()">';
                 $('#selectTypeDamage').html(output);
             },
             error: function (jqXHR, testStatus, errorThrown) {
@@ -198,26 +135,6 @@
 
     var FindDamages = function () {
         var requestParam = '';
-        /*var myStr = '';
-        if ($('#closedCheck1').is(':checked')){
-            myStr+="Показывать закрытые неисправности выбран"
-        } else {
-            myStr+="Показывать закрытые неисправности не выбран"
-        }
-
-        if ($('#radio1').is(':checked')){
-            myStr+="; Выбран Radio1; "
-        }
-        if ($('#radio2').is(':checked')){
-            myStr+="; Выбран Radio2; "
-        }
-        if ($('#radio3').is(':checked')){
-            myStr+="; Выбран Radio3; "
-        }
-
-        myStr+=$('#typeDamage').val() + "; ";
-        myStr+=$('#idInputTlfNum').val();*/
-        //alert(myStr);
         //Выбрано Radio кнопка "Выбрать все"
         if ($('#radio1').is(':checked')){
             requestParam += "damage/get/all/" + "closed/";
@@ -252,15 +169,95 @@
             dataType: 'json',
             async: false,
             success: function (result) {
-                alert(JSON.stringify(result));
-                jsonObjDamage = result;
+                // alert(JSON.stringify(result));
+                // jsonObjDamage = result;
                 //здесь будем отрисовывать таблицу записей неисправностей
-
+                var stringData = JSON.stringify(result);
+                dataArray = JSON.parse(stringData);
+                DmgCount = dataArray.length;
+                ShowDataTable();
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 $('#response').html(JSON.stringify(jqXHR))
             }
         });
+    };
+
+    var ShowDataTable = function () {
+        // var stringData = JSON.stringify(result);
+        //output += '<br>' + stringData;
+        // var arrData = JSON.parse(stringData);
+        // DmgCount = arrData.length;
+        // alert("DmgCount=" + DmgCount);
+        var i = endArrDamages -blocksize;
+        dtArr = [];
+        var durTime = 0;
+        var output = '';
+        output+= '<table class="table-row-cell" border="1">';
+        output+= '<tr>';
+        output+= '<th>ID</'+'th>';
+        output+= '<th>Тлф номер</'+'th>';
+        output+= '<th>Описание неисправности</'+'th>';
+        output+= '<th>Дата время начало</'+'th>';
+        output+= '<th>Дата время окончание</'+'th>';
+        output+= '<th>Продолжительность</'+'th>';
+        output+= '<th>Адрес</'+'th>';
+        output+= '</' +'tr>';
+
+        // for (i = beginArrDamages; i < beginArrDamages+10; i++) {
+        //  for (i in arrData) {
+        while (i < endArrDamages){
+            if (i == DmgCount){
+                break;
+            }
+            output += '<tr>';
+            output += '<th>' + dataArray[i].id + '</' + 'th>';
+            output += '<th>' + dataArray[i].tlfnum + '</' + 'th>';
+            output += '<th>' + dataArray[i].description + '</' + 'th>';
+            // output += '<th>' + arrData[i].dateTimeBegin + '</' + 'th>';
+            if (dataArray[i].dateTimeBegin !== null) {
+                dtArr = dataArray[i].dateTimeBegin;
+                output += '<th>' + dtArr[0] + '-' + (dtArr[1]<10?"0"+dtArr[1]:dtArr[1]) + '-' + dtArr[2] + ' ' + dtArr[3] + ':' + dtArr[4] +'</' + 'th>';
+            } else {
+                output += '<th>' + "не задано" + '</' + 'th>';
+            }
+            if (dataArray[i].dateTimeEnd !== null) {
+                dtArr = dataArray[i].dateTimeEnd;
+                output += '<th>' + dtArr[0] + '-' + (dtArr[1]<10?"0"+dtArr[1]:dtArr[1]) + '-' + dtArr[2] + ' ' + dtArr[3] + ':' + dtArr[4] +'</' + 'th>';
+            } else {
+                output += '<th>' + "не задано" + '</' + 'th>';
+            }
+            // output += '<th>' + arrData[i].duration + '</' + 'th>';
+            // output += '<th>' + arrData[i].duration + '</' + 'th>';
+
+            if (dataArray[i].dateTimeBegin !== null && dataArray[i].dateTimeEnd == null) {
+                durTime = new Date(dataArray[i].dateTimeBegin[0],dataArray[i].dateTimeBegin[1]-1,dataArray[i].dateTimeBegin[2],dataArray[i].dateTimeBegin[3],dataArray[i].dateTimeBegin[4],0,0);
+                output+= '<th>' +GetDuration(durTime) +'</' + 'th>';
+            } else {
+                output += '<th>' + "не задано" + '</' + 'th>';
+            }
+            output += '<th>' + dataArray[i].krdid + '</' + 'th>';
+            output += '</' + 'tr>';
+            // beginArrDamages ++;
+            i ++;
+        }
+        output+= '<tr>';
+        output+= '<th></'+'th>';
+        output+= '<th><button type="button" onclick="ToLeft()">В начало</button></'+'th>';
+        output+= '<th><button type="button" onclick="ToRight()">В конец</button></'+'th>';
+        // output+= '<th>Описание неисправности</'+'th>';
+        output+= '<th></'+'th>';
+        output+= '<th></'+'th>';
+        output+= '<th></'+'th>';
+        output+= '</' +'tr>';
+
+        output+= '</' +'table>';
+
+        $('#response').html(output);
+    };
+
+    var ZeroingCounter = function () {
+        endArrDamages = blocksize;
     };
 
     window.onload = RestGetAllDamages;
@@ -282,25 +279,25 @@
             <tr>
                 <th>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="closedCheck1">
+                        <input class="form-check-input" type="checkbox" value="" id="closedCheck1" onclick="ZeroingCounter()">
                         <label class="form-check-label" for="closedCheck1">
                             Показывать закрытые неисправности
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="findRadio" id="radio1" value="option1" checked>
+                        <input class="form-check-input" type="radio" name="findRadio" id="radio1" value="option1" onclick="ZeroingCounter()" checked>
                         <label class="form-check-label" for="radio1">
                             Выбрать все
                         </label>
                     </div>
                     <div class="form-check">
-                        <input class="form-check-input" type="radio" name="findRadio" id="radio2" value="option2">
+                        <input class="form-check-input" type="radio" name="findRadio" id="radio2" value="option2" onclick="ZeroingCounter()">
                         <label class="form-check-label" for="radio2">
                             Поиск по типу неисправности
                         </label>
                     </div>
                     <div class="form-check disabled">
-                        <input class="form-check-input" type="radio" name="findRadio" id="radio3" value="option3">
+                        <input class="form-check-input" type="radio" name="findRadio" id="radio3" value="option3" onclick="ZeroingCounter()">
                         <label class="form-check-label" for="radio3">
                             Поиск по номеру телефона
                         </label>

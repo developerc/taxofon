@@ -168,35 +168,18 @@
         // var jsonObjTaxofon = {};
        // alert(idDmgTax + '___' + typDmg);
         //получили экземпляр таксофона от сервера
-        GetTaxofonById(idDmgTax);
+        GetTaxofonById(idDmgTax, typDmg);
         //добавляем неисправность в таблицу неисправностей
-        PostDamage(typDmg);
+        // PostDamage(typDmg);
         //обьект неисправности приклеиваем к обьекту таксофона и делаем Update таксофона
-        PutJsonTaxofonAddDamage();
+        // PutJsonTaxofonAddDamage();
         // alert(jsonObjTaxofon.tlfnum);
         // alert(JSON.stringify(jsonObjTaxofon));
         // alert(jsonObjTaxofon);
-       /* var JSONObject =  {
-            'description': typeDamage,
-            'taxofonList_id': idDamagedTaxofon
-        };
-        $.ajax({
-            type: 'POST',
-            url: service + "damage/add",
-            contentType: 'application/json;charset=utf-8',
-            data: JSON.stringify(JSONObject),
-            dataType: 'json',
-            async: false,
-            success: function (result) {
-                alert('неисправность добавлена');
-            },
-            error: function (jqXHR, testStatus, errorThrown) {
-                alert('Ошибка добавления неисправности');
-            }
-        });*/
+
     };
 
-    var GetTaxofonById = function (idTaxofon) {
+    var GetTaxofonById = function (idTaxofon, typDmg) {
         $.ajax({
             type: 'GET',
             url: service + 'taxofon/get/' + idTaxofon,
@@ -204,8 +187,8 @@
             async: false,
             success: function (result) {
                 // alert(JSON.stringify(result));
-               // return result;
                 jsonObjTaxofon = result;
+                PostDamage(typDmg);
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 alert('Ошибка получения таксофона по ID');
@@ -222,6 +205,7 @@
             // 'dateTimeBegin': "2018-05-23T13:50:00"
             'dateTimeBegin': dtb
         };
+        // alert(JSON.stringify(JSONObject));
         $.ajax({
             type: 'POST',
             url: service + "damage/add",
@@ -231,6 +215,7 @@
             async: false,
             success: function (result) {
                 jsonObjDamage =result;
+                PutJsonTaxofonAddDamage();
                 // alert("dateTimeBegin:" + dtb);
             },
             error: function (jqXHR, testStatus, errorThrown) {

@@ -21,6 +21,11 @@ public class AppController {
         return "statistika";
     }
 
+    @RequestMapping("/map")
+    public String mapPage(){
+        return "map";
+    }
+
    /* @RequestMapping("/calendar")
     public String calendarPage(){
         return "calendar";

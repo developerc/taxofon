@@ -35,7 +35,7 @@
                     <a href="http://localhost:8080/statistika">Статистика</a>
                 </li>
                 <li>
-                    <a href="http://localhost:8080/quiz">Карта</a>
+                    <a href="http://localhost:8080/map">Карта</a>
                 </li>
                 <li>
                     <a href="http://localhost:8080/damagetype">Типы неисправностей</a>

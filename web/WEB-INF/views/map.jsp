@@ -49,6 +49,7 @@
 
     function  GetMarkerCoords() {
         var output = '';
+
         $.ajax({
             type: 'GET',
             url: service + 'taxofon/all',
@@ -56,6 +57,14 @@
             async: false,
             success: function (result) {
                 var greenIcon = new L.Icon({
+                    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-green.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
+                var redIcon = new L.Icon({
                     iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-red.png',
                     shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
                     iconSize: [25, 41],
@@ -67,10 +76,38 @@
                 var stringData = JSON.stringify(result);
                 var arrData = JSON.parse(stringData);
                 for (i in arrData) {
+                    var troubleNotOpen = true;
                     latlng = L.latLng(arrData[i].lat, arrData[i].lon);
                     // L.marker([arrData[i].lat, arrData[i].lon]).addTo(mymap)
-                    L.marker(latlng, {icon: greenIcon}).addTo(mymap)
-                        .bindPopup("<b>" +arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
+                    var arDaLi = [];
+                        arDaLi = arrData[i].damageLists;
+                    if (arDaLi.length == 0){
+                        alert('нет записей о неисправности')
+                    } else {
+                        alert(arrData[i].damageLists);
+                        for (i in arDaLi){
+                            if (arDaLi[i].dateTimeEnd == null){
+                                alert('arDaLi.dateTimeEnd == null' + arDaLi.dateTimeEnd.toString());
+                                troubleNotOpen = false;
+                            } else {
+                                alert('arDaLi.dateTimeEnd !== null' + arDaLi.dateTimeEnd.toString());
+                            }
+                        }
+                    }
+                    if (troubleNotOpen == true) {
+                        L.marker(latlng, {icon: greenIcon}).addTo(mymap)
+                            .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
+                    } else {
+                        L.marker(latlng, {icon: redIcon}).addTo(mymap)
+                            .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
+                    }
+                    /*if(CheckTroubleOpen(arrData[i].damageLists)) {
+                        L.marker(latlng, {icon: greenIcon}).addTo(mymap)
+                            .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
+                    } else {
+                        L.marker(latlng, {icon: redIcon}).addTo(mymap)
+                            .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
+                    }*/
                 }
                 // alert(stringData);
             },
@@ -78,6 +115,28 @@
                 alert('Ошибка получения координат таксофонов')
             }
         });
+    };
+
+    var CheckTroubleOpen = function (arrDamageList) {
+        //если возвращает true значит нет открытых заявок на неисправность
+        var troubleNotOpen = true;
+        var arDaLi = [];
+        arDaLi = arrDamageList;
+        if (arDaLi.length == 0){
+            // alert('arDaLi = []')
+            return true;
+        } else {
+            for (i in arDaLi){
+                if (arDaLi.dateTimeEnd == null){
+                    // alert('arDaLi.dateTimeEnd == null');
+                    troubleNotOpen = false;
+                } else {
+                    // alert('arDaLi.dateTimeEnd !== null');
+                }
+            }
+            return troubleNotOpen;
+        }
+
     };
 
     mymap.on('click', onMapClick);

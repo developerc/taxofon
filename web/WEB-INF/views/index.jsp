@@ -102,6 +102,15 @@
         if (month < 10){
             month = "0" + month;
         }
+        if (day < 10){
+            day ="0" + day;
+        }
+        if (hours < 10){
+            hours ="0" + hours;
+        }
+        if (minutes < 10){
+            minutes ="0" + minutes;
+        }
         $( "#datepicker" ).datepicker();
         $( "#datepicker" ).datepicker("option", "dateFormat", "yy-mm-dd");
         $("#datepicker").val(year + "-" + month + "-" + day);

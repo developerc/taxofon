@@ -22,7 +22,7 @@
         maxZoom: 20,
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
         '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
-        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>' + 'ПАО Ростелеком ЛТЦ Тихорецкий район',
         id: 'mapbox.streets'
     }).addTo(mymap);
 
@@ -78,29 +78,47 @@
                 for (i in arrData) {
                     var troubleNotOpen = true;
                     latlng = L.latLng(arrData[i].lat, arrData[i].lon);
+
                     // L.marker([arrData[i].lat, arrData[i].lon]).addTo(mymap)
                     var arDaLi = [];
                         arDaLi = arrData[i].damageLists;
-                    if (arDaLi.length == 0){
-                        alert('нет записей о неисправности')
-                    } else {
-                        alert(arrData[i].damageLists);
-                        for (i in arDaLi){
-                            if (arDaLi[i].dateTimeEnd == null){
-                                alert('arDaLi.dateTimeEnd == null' + arDaLi.dateTimeEnd.toString());
-                                troubleNotOpen = false;
-                            } else {
-                                alert('arDaLi.dateTimeEnd !== null' + arDaLi.dateTimeEnd.toString());
+
+                        var ldl = 1; //неисправность закрыта
+                        if (arDaLi.length > 0) {
+                            for (k in arDaLi) {
+                                if (arDaLi[k].dateTimeEnd == null) {
+                                    ldl = ldl * 0;
+                                }
                             }
                         }
-                    }
-                    if (troubleNotOpen == true) {
-                        L.marker(latlng, {icon: greenIcon}).addTo(mymap)
-                            .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
-                    } else {
-                        L.marker(latlng, {icon: redIcon}).addTo(mymap)
-                            .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
-                    }
+                    // alert(latlng.toString() + ";" + ldl);
+                        if (ldl > 0){
+                            L.marker(latlng, {icon: greenIcon}).addTo(mymap)
+                                .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
+                        } else {
+                            L.marker(latlng, {icon: redIcon}).addTo(mymap)
+                                .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
+                        }
+                    /* if (arDaLi.length == 0){
+                         alert('нет записей о неисправности')
+                     } else {
+                         alert(arDaLi);
+                         for (i in arDaLi){
+                             if (arDaLi[i].dateTimeEnd == null){
+                                 alert('arDaLi.dateTimeEnd == null' + arDaLi.dateTimeEnd.toString());
+                                 troubleNotOpen = false;
+                             } else {
+                                 alert('arDaLi.dateTimeEnd !== null' + arDaLi.dateTimeEnd.toString());
+                             }
+                         }
+                     }
+                     if (troubleNotOpen == true) {
+                         L.marker(latlng, {icon: greenIcon}).addTo(mymap)
+                             .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
+                     } else {
+                         L.marker(latlng, {icon: redIcon}).addTo(mymap)
+                             .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
+                     }*/
                     /*if(CheckTroubleOpen(arrData[i].damageLists)) {
                         L.marker(latlng, {icon: greenIcon}).addTo(mymap)
                             .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);

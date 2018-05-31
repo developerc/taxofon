@@ -126,7 +126,7 @@
         async: false,
         success: function (result) {
             alert('Тип неисправности удален');
-            DelAccTaxDamage(result);
+            FindAccTaxDamageId(result);
             RestGetAllDamages();
         },
         error: function (jqXHR, testStatus, errorThrown) {
@@ -135,11 +135,13 @@
     });
     };
 
-    var DelAccTaxDamage = function (result) {
-        //удаляем рабочую неисправность таксофона
+    var FindAccTaxDamageId = function (result) {
+        //Находим ID доступный неисправный таксофон
         // alert(JSON.stringify(result));
+        var DmgCount = 0;
         var description = result.itemDamage;
-        alert('itemDamage:' + description);
+        var idDmg = 0;
+        // alert('itemDamage:' + description);
         $.ajax({
             type: 'GET',
             url: service + 'acctax/get/description/' + description,
@@ -148,9 +150,35 @@
             success: function (result) {
             alert(JSON.stringify(result));
             //получили массив здесь будем удалять элементы массива
+                var stringData = JSON.stringify(result);
+                dataArray = JSON.parse(stringData);
+                DmgCount = dataArray.length;
+                if (DmgCount > 0){
+                    for (i in dataArray){
+                        idDmg = dataArray[i].id;
+                        DelAccTaxDamageId(idDmg);
+                    }
+                }
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 alert('Ошибка получения неисправности по description');
+            }
+        });
+    };
+
+    var DelAccTaxDamageId = function (idDmg) {
+        //Удаляем доступный неисправный таксофон по ID
+        // alert('idDmg=' + idDmg);
+        $.ajax({
+            type: 'DELETE',
+            url: service + "acctax/delete?id=" + idDmg,
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                alert('Неисправность доступного таксофона удалена')
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                alert('Ошибка удаления неисправного доступного таксофона');
             }
         });
     };

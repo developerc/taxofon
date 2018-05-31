@@ -26,7 +26,7 @@
         id: 'mapbox.streets'
     }).addTo(mymap);
 
-    GetMarkerCoords();
+    // GetMarkerCoords();
 
     var popup = L.popup();
 
@@ -39,7 +39,9 @@
 
     function  GetMarkerCoords() {
         var output = '';
-
+        var accTaxDamages = [];
+        // CheckAccTax();
+        // console.log('hello console');
         $.ajax({
             type: 'GET',
             url: service + 'taxofon/all',
@@ -62,6 +64,15 @@
                     popupAnchor: [1, -34],
                     shadowSize: [41, 41]
                 });
+                var yellowIcon = new L.Icon({
+                    iconUrl: 'https://cdn.rawgit.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-yellow.png',
+                    shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.7/images/marker-shadow.png',
+                    iconSize: [25, 41],
+                    iconAnchor: [12, 41],
+                    popupAnchor: [1, -34],
+                    shadowSize: [41, 41]
+                });
+
                 var latlng;
                 var stringData = JSON.stringify(result);
                 var arrData = JSON.parse(stringData);
@@ -97,10 +108,34 @@
                 alert('Ошибка получения координат таксофонов')
             }
         });
+        CheckAccTax();
+    };
+
+    var CheckAccTax = function () {
+        var accTaxDamages = [];
+        var dataArray;
+        console.log('here checkacctax')
+        $.ajax({
+            type: 'GET',
+            url: service + 'acctax/all',
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                var stringData = JSON.stringify(result);
+                console.log(stringData);
+                dataArray = JSON.parse(stringData);
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                // alert('Ошибка получения списка неисправностей');
+                console.log('error get list damages')
+            }
+        });
+        // return accTaxDamages;
     };
 
     mymap.on('click', onMapClick);
-    // window.onload = GetMarkerCoords;
+    // mymap.on('click', GetMarkerCoords);
+    window.onload = GetMarkerCoords;
 </script>
 
 </body>

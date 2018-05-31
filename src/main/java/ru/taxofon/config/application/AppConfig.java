@@ -6,15 +6,15 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.core.env.Environment;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import ru.taxofon.dao.AccessibleDao;
+import ru.taxofon.dao.AccTaxDao;
 import ru.taxofon.dao.DamageDescriptionDao;
 import ru.taxofon.dao.DamageListDao;
 import ru.taxofon.dao.TaxofonListDao;
-import ru.taxofon.dao.impl.AccessibleDaoImpl;
+import ru.taxofon.dao.impl.AccTaxDaoImpl;
 import ru.taxofon.dao.impl.DamageDescriptionDaoImpl;
 import ru.taxofon.dao.impl.DamageListDaoImpl;
 import ru.taxofon.dao.impl.TaxofonListDaoImpl;
-import ru.taxofon.entity.Accessible;
+import ru.taxofon.entity.AccTax;
 import ru.taxofon.entity.DamageDescription;
 import ru.taxofon.entity.DamageList;
 import ru.taxofon.entity.TaxofonList;
@@ -52,7 +52,7 @@ public class AppConfig {
     }
 
     @Bean
-    public AccessibleDao accessibleDao(){
-        return new AccessibleDaoImpl(Accessible.class);
+    public AccTaxDao accessibleDao(){
+        return new AccTaxDaoImpl(AccTax.class);
     }
 }

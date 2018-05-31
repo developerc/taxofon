@@ -19,7 +19,7 @@
                 output+= '<table class="table-row-cell" border="1">';
                 output+= '<tr>';
                 output+= '<th>ID</'+'th>';
-                output+= '<th>Тип неисправности</'+'th>';
+                output+= '<th>Все типы неисправностей</'+'th>';
                 output+= '</' +'tr>';
 
                 for (i in arrData) {
@@ -34,6 +34,36 @@
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 $('#response').html(JSON.stringify(jqXHR))
+            }
+        });
+        //заполняем таблицу неисправностb доступных таксофонов
+        $.ajax({
+            type: 'GET',
+            url: service + 'acctax/all',
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                var output = '';
+                var stringData = JSON.stringify(result);
+                var arrData = JSON.parse(stringData);
+                output+= '<table class="table-row-cell" border="1">';
+                output+= '<tr>';
+                output+= '<th>ID</'+'th>';
+                output+= '<th>Тип неисправности доступного таксофона</'+'th>';
+                output+= '</' +'tr>';
+
+                for (i in arrData) {
+                    output += '<tr>';
+                    output += '<th>' + arrData[i].id + '</' + 'th>';
+                    output += '<th>' + arrData[i].accDamage + '</' + 'th>';
+                    output += '</' + 'tr>';
+                }
+
+                output+= '</' +'table>';
+                $('#acctable').html(output);
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                $('#acctable').html(JSON.stringify(jqXHR))
             }
         });
     };
@@ -52,10 +82,38 @@
             async: false,
             success: function (result) {
                 alert('Тип неисправности сохранен');
-                RestGetAllDamages();
+                // RestGetAllDamages();
+                // AddDTAcc(addDamageType)
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 alert('Ошибка сохранения типа неисправности');
+            }
+        });
+        if ($('#accessCheck1').is(':checked')){
+            AddDTAcc(addDamageType);
+        }
+
+
+    };
+
+    //добавляем неисправность доступного таксофона
+    var AddDTAcc = function (addDamageType) {
+        var JSONObject2 =  {
+            'accDamage': addDamageType
+        };
+        $.ajax({
+            type: 'POST',
+            url: service + "acctax/add",
+            contentType: 'application/json;charset=utf-8',
+            data: JSON.stringify(JSONObject2),
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+                alert('Тип неисправности доступного таксофона сохранен');
+                RestGetAllDamages();
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                alert('Ошибка сохранения типа неисправности доступного таксофона');
             }
         });
     };
@@ -68,12 +126,33 @@
         async: false,
         success: function (result) {
             alert('Тип неисправности удален');
+            DelAccTaxDamage(result);
             RestGetAllDamages();
         },
         error: function (jqXHR, testStatus, errorThrown) {
             alert('Ошибка удаления неисправности');
         }
     });
+    };
+
+    var DelAccTaxDamage = function (result) {
+        //удаляем рабочую неисправность таксофона
+        // alert(JSON.stringify(result));
+        var description = result.itemDamage;
+        alert('itemDamage:' + description);
+        $.ajax({
+            type: 'GET',
+            url: service + 'acctax/get/description/' + description,
+            dataType: 'json',
+            async: false,
+            success: function (result) {
+            alert(JSON.stringify(result));
+            //получили массив здесь будем удалять элементы массива
+            },
+            error: function (jqXHR, testStatus, errorThrown) {
+                alert('Ошибка получения неисправности по description');
+            }
+        });
     };
 
     window.onload = RestGetAllDamages;
@@ -88,6 +167,12 @@
             <tr>
                 <th>Добавить тип неисправности</th>
                 <th><input id="addTypeDamage" value="тип неисправности"/></th>
+                <th>
+                    <input class="form-check-input" type="checkbox" value="" id="accessCheck1" >
+                    <label class="form-check-label" for="accessCheck1">
+                        Для доступного таксофона
+                    </label>
+                </th>
                 <th><button type="button" onclick="AddDamageType($('#addTypeDamage').val())">OK</button></th>
             </tr>
             <tr>
@@ -98,6 +183,7 @@
         </table>
     </div>
     <div class="panel-body" id="response"></div>
+    <div class="panel-body" id="acctable"></div>
 </div>
 </body>
 <%@ include file = "footer.jsp" %>

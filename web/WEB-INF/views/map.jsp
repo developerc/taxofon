@@ -26,16 +26,6 @@
         id: 'mapbox.streets'
     }).addTo(mymap);
 
-    /*L.marker([45.852717, 40.131683]).addTo(mymap)
-        .bindPopup("<b>41256</b><br />Октябрьская 24А");
-    L.marker([45.849608, 40.104218]).addTo(mymap)
-        .bindPopup("<b>41256</b><br />Октябрьская 24А");
-    L.marker([45.803435, 40.103188]).addTo(mymap)
-        .bindPopup("<b>41256</b><br />Октябрьская 24А");
-    L.marker([45.770995, 40.159492]).addTo(mymap)
-        .bindPopup("<b>41256</b><br />Октябрьская 24А");
-    L.marker([45.906853, 40.160179]).addTo(mymap)
-        .bindPopup("<b>41256</b><br />Октябрьская 24А");*/
     GetMarkerCoords();
 
     var popup = L.popup();
@@ -99,33 +89,7 @@
                             L.marker(latlng, {icon: redIcon}).addTo(mymap)
                                 .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
                         }
-                    /* if (arDaLi.length == 0){
-                         alert('нет записей о неисправности')
-                     } else {
-                         alert(arDaLi);
-                         for (i in arDaLi){
-                             if (arDaLi[i].dateTimeEnd == null){
-                                 alert('arDaLi.dateTimeEnd == null' + arDaLi.dateTimeEnd.toString());
-                                 troubleNotOpen = false;
-                             } else {
-                                 alert('arDaLi.dateTimeEnd !== null' + arDaLi.dateTimeEnd.toString());
-                             }
-                         }
-                     }
-                     if (troubleNotOpen == true) {
-                         L.marker(latlng, {icon: greenIcon}).addTo(mymap)
-                             .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
-                     } else {
-                         L.marker(latlng, {icon: redIcon}).addTo(mymap)
-                             .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
-                     }*/
-                    /*if(CheckTroubleOpen(arrData[i].damageLists)) {
-                        L.marker(latlng, {icon: greenIcon}).addTo(mymap)
-                            .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
-                    } else {
-                        L.marker(latlng, {icon: redIcon}).addTo(mymap)
-                            .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
-                    }*/
+
                 }
                 // alert(stringData);
             },
@@ -133,28 +97,6 @@
                 alert('Ошибка получения координат таксофонов')
             }
         });
-    };
-
-    var CheckTroubleOpen = function (arrDamageList) {
-        //если возвращает true значит нет открытых заявок на неисправность
-        var troubleNotOpen = true;
-        var arDaLi = [];
-        arDaLi = arrDamageList;
-        if (arDaLi.length == 0){
-            // alert('arDaLi = []')
-            return true;
-        } else {
-            for (i in arDaLi){
-                if (arDaLi.dateTimeEnd == null){
-                    // alert('arDaLi.dateTimeEnd == null');
-                    troubleNotOpen = false;
-                } else {
-                    // alert('arDaLi.dateTimeEnd !== null');
-                }
-            }
-            return troubleNotOpen;
-        }
-
     };
 
     mymap.on('click', onMapClick);

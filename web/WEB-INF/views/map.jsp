@@ -15,6 +15,7 @@
 
 <div id="mapid" style="width: 100%; height: 100%;"></div>
 <script>
+    var arrAccTaxDamages = [];
     var service = 'http://localhost:8080/';
     var mymap = L.map('mapid').setView([45.852717, 40.131683], 12);
 
@@ -40,7 +41,10 @@
     function  GetMarkerCoords() {
         var output = '';
         var accTaxDamages = [];
-        // CheckAccTax();
+        CheckAccTax();
+        for (i in arrAccTaxDamages){
+            console.log(arrAccTaxDamages[i]);
+        }
         // console.log('hello console');
         $.ajax({
             type: 'GET',
@@ -88,19 +92,34 @@
                         if (arDaLi.length > 0) {
                             for (k in arDaLi) {
                                 if (arDaLi[k].dateTimeEnd == null) {
-                                    ldl = ldl * 0;
+                                    //проверим может неисправность рабочая
+                                    for (z in arrAccTaxDamages){
+                                        if (arrAccTaxDamages[z] == arDaLi[k].description){
+                                            ldl = 2;
+                                        }
+                                    }
+                                    if (ldl !== 2) {
+                                        ldl = ldl * 0;
+                                    }
                                 }
                             }
                         }
                     // alert(latlng.toString() + ";" + ldl);
-                        if (ldl > 0){
+                        if (ldl == 1){
+                            console.log('ldl=1' + arrData[i].adres);
                             L.marker(latlng, {icon: greenIcon}).addTo(mymap)
                                 .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
-                        } else {
+                        }
+                        if(ldl == 0) {
+                            console.log('ldl=0' + arrData[i].adres);
                             L.marker(latlng, {icon: redIcon}).addTo(mymap)
                                 .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
                         }
-
+                    if(ldl == 2) {
+                        console.log('ldl=2' + arrData[i].adres);
+                        L.marker(latlng, {icon: yellowIcon}).addTo(mymap)
+                            .bindPopup("<b>" + arrData[i].tlfnum + "</b><br />" + arrData[i].adres);
+                    }
                 }
                 // alert(stringData);
             },
@@ -108,12 +127,12 @@
                 alert('Ошибка получения координат таксофонов')
             }
         });
-        CheckAccTax();
+        // CheckAccTax();
     };
 
     var CheckAccTax = function () {
-        var accTaxDamages = [];
-        var dataArray;
+        var dataArray = [];
+        var dataObj = {};
         console.log('here checkacctax')
         $.ajax({
             type: 'GET',
@@ -124,6 +143,10 @@
                 var stringData = JSON.stringify(result);
                 console.log(stringData);
                 dataArray = JSON.parse(stringData);
+                for (i in dataArray){
+                    dataObj = dataArray[i];
+                    arrAccTaxDamages.push(dataObj.accDamage);
+                }
             },
             error: function (jqXHR, testStatus, errorThrown) {
                 // alert('Ошибка получения списка неисправностей');

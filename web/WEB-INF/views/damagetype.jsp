@@ -148,7 +148,7 @@
             dataType: 'json',
             async: false,
             success: function (result) {
-            alert(JSON.stringify(result));
+            // alert(JSON.stringify(result));
             //получили массив здесь будем удалять элементы массива
                 var stringData = JSON.stringify(result);
                 dataArray = JSON.parse(stringData);

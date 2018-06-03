@@ -26,8 +26,8 @@ public class AppController {
         return "map";
     }
 
-   /* @RequestMapping("/calendar")
+    @RequestMapping("/help")
     public String calendarPage(){
-        return "calendar";
-    }*/
+        return "help";
+    }
 }

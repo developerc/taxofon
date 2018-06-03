@@ -19,6 +19,10 @@
           <element id="library" level="project" name="Maven: org.springframework:spring-tx:4.3.11.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-jdbc:4.3.11.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework:spring-test:4.3.11.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-core:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: aopalliance:aopalliance:1.0" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-web:4.2.4.RELEASE" />
+          <element id="library" level="project" name="Maven: org.springframework.security:spring-security-config:4.2.4.RELEASE" />
           <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:5.2.16.Final" />
           <element id="library" level="project" name="Maven: org.jboss.logging:jboss-logging:3.3.1.Final" />
           <element id="library" level="project" name="Maven: org.hibernate.javax.persistence:hibernate-jpa-2.1-api:1.0.0.Final" />

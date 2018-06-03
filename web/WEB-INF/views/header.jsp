@@ -41,7 +41,7 @@
                     <a href="http://localhost:8080/damagetype">Типы неисправностей</a>
                 </li>
                 <li>
-                    <a href="http://localhost:8080/user">Help</a>
+                    <a href="http://localhost:8080/help">Help</a>
                 </li>
 
             </ul>

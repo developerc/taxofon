@@ -1,7 +1,7 @@
 <component name="ArtifactManager">
   <artifact type="war" name="taxofon:war">
     <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="jholidaycalendar.war">
+    <root id="archive" name="taxofon.war">
       <element id="artifact" artifact-name="taxofon:war exploded" />
     </root>
   </artifact>
